@@ -1,2 +1,3 @@
 *_macos
 *.exe
+/node_modules

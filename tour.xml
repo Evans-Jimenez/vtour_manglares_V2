@@ -22,19 +22,42 @@
 
 
 
+
 	<scene name="black_mangrove" title="Mangle Negro" onstart="" thumburl="panos/R0010050.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 
-		<control bouncinglimits="true" />
+		<layer name="threejs_container" iframeurl="https://siriuzz.github.io/vtour_3dmodels/viewer.html?model=cell" type="iframe" align="center" width="60%" height="30%" visible="false" fillcolor="0xffffff" />
+		<action name="toggle_3dmodel">
+			if(layer[threejs_container].visible == true,
+				set(layer[threejs_container].visible, false);
+				set(hotspot[hide_model].visible, false);
+			,
+				set(layer[threejs_container].visible, true);
+				set(hotspot[hide_model].visible, true);
+			);
+		</action>
 
+		<control bouncinglimits="true" />
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
-		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="114.6" atv="-1.2" scale="1.3" depth="1664.6" onloaded="do_crop_animation(64,64, 30);" linkedscene="red_mangrove_beach_1" />
-		<hotspot name="infospot" style="infospot" ath="99.74408771117481" atv="6.28621641126942" scale="1.30000000000000" depth="1664.59999999999991" onloaded="circlepos(3,6);" html="Recurso 3D" onclick="popup('iframe', 'https://siriuzz.github.io/vtour_3dmodels/viewer.html?model=cell', 800, 600, false);"/>
+
+		<hotspot name="show_model" style="skin_animated_hotspot" ath="-23.08597589881083" atv="-7.44657373599020" scale="1.30000000000000" depth="1137.20000000000005" onloaded="do_crop_animation(64,64, 30);" onclick="toggle_3dmodel()" />
+		<hotspot name="hide_model" ath="-9.52749630749702" atv="49.50119482149891" scale="1.30000000000000" visible="false" style="skin_animated_hotspot" onloaded="do_crop_animation(64,64, 30);" depth="1664.59999999999991" onclick="toggle_3dmodel()" />
+
+
+		<hotspot name="animated_hotspot" onloaded="do_crop_animation(64,64, 30);" style="skin_animated_hotspot" ath="114.6" atv="-1.2" scale="1.3" depth="1664.6" linkedscene="red_mangrove_beach_1" />
+		<!-- <hotspot name="infospot" style="infospot" ath="99.74408771117481" atv="6.28621641126942" scale="1.30000000000000" depth="1664.59999999999991" onloaded="circlepos(3,6);" html="Recurso 3D" onclick="popup('iframe', 'https://siriuzz.github.io/vtour_3dmodels/viewer.html?model=cell', 800, 600, false);"/> -->
 
 		<preview url="panos/R0010050.tiles/preview.jpg" />
 
 		<image prealign="4.027685|-0.039407|0.942229">
 			<cube url="panos/R0010050.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,768,1664" />
 		</image>
+		<!-- <layer name="fullscreen_click" type="container" width="100%" height="100%" align="center" onclick="check_click();" /> -->
+		<!-- Layer del 3D Model -->
+		<!-- <layer name="threejs_container" iframeurl="https://siriuzz.github.io/vtour_3dmodels/viewer.html?model=cell" type="iframe" align="center" width="80%" height="80%" visible="false" fillcolor="0xAAAAAA" /> -->
+
+		<!-- Evento para ocultar el layer si se hace clic fuera -->
+
+		<!-- Detecta clics fuera del layer y ejecuta la acción -->
 
 	</scene>
 
@@ -273,7 +296,7 @@
 
 	<scene name="partial_pano_1" title="Raíces" onstart="" thumburl="panos/pano_1.jpg" lat="18.21359167" lng="-70.53562222" alt="27.46" heading="0.0">
 
-		<control bouncinglimits="true" />
+		<control bouncinglimits="false" />
 
 		<view hlookat="0.0" vlookat="0.0" fovtype="VFOV" fov="140.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
 
@@ -287,7 +310,7 @@
 
 	<scene name="partial_pano_2" title="Raíces" onstart="" thumburl="panos/pano_2.jpg" lat="18.21359167" lng="-70.53562222" alt="27.46" heading="0.0">
 
-		<control bouncinglimits="true" />
+		<control bouncinglimits="false" />
 
 		<view hlookat="0.0" vlookat="0.0" fovtype="VFOV" fov="140.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
 
