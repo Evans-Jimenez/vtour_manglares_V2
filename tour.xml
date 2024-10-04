@@ -7,7 +7,7 @@
 
 
 	<layer name="intro" type="container" keep="true" width="100%" height="100%" bgcolor="0x000000" bgalpha="0.8" zorder="9999" enabled="true" bgcapture="true" vr="true" onloaded="on_intro_loaded()" onclick="on_intro_click()">
-		<layer name="intro_logo" url="skin/logo.png" align="center" y="90" scale="0.2" enabled="false" alpha="0" vr="true" />
+		<layer name="intro_logo" url="skin/logo.png" align="center" y="-70" scale="0.2" enabled="false" alpha="0" vr="true" />
 		<layer name="intro_guide" url="skin/help_desktop.png" align="center" y="80" scale="1" enabled="false" alpha="0" vr="true" />
 	</layer>
 
@@ -26,8 +26,8 @@
 
 	<action name="on_intro_loaded">
 		set(hotspot[show_model].visible, false);
-		set(hotspot[hide_model].visible, false);
-		set(hotspot[animated_hotspot].visible, false)
+																				<!-- set(hotspot[hide_model].visible, false); -->
+		<!-- set(hotspot[animated_hotspot].visible, false) -->
 		delayedcall(2,
 		tween(layer[intro_logo].alpha, 1);
 		tween(layer[intro_guide].alpha, 1);
@@ -52,8 +52,9 @@
 
 
 	<scene name="black_mangrove" title="Mangle Negro" onstart="" thumburl="panos/R0010050.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
-
-		<layer name="threejs_container" iframeurl="https://siriuzz.github.io/vtour_3dmodels/viewer.html?model=cell" type="iframe" align="center" width="60%" height="30%" visible="false" fillcolor="0xffffff" />
+		<!-- <layer name="intro" type="container" keep="true" width="100%" height="100%" bgcolor="0x000000" bgalpha="0.8" zorder="9999" enabled="true" bgcapture="true" vr="true">
+		</layer> -->
+		<layer name="threejs_container" iframeurl="https://siriuzz.github.io/vtour_3dmodels/viewer.html?model=cell" type="iframe" vr="true" align="center" width="60%" height="30%" visible="false" fillcolor="0xffffff" />
 		<action name="toggle_3dmodel">
 			if(layer[threejs_container].visible == true,
 				set(layer[threejs_container].visible, false);
@@ -75,7 +76,8 @@
 			set(hotspot[Creditos].enabled, false);
 			set(hotspot[Bienvenido].enabled, false);
 			set(hotspot[show_model].visible, true);
-			set(hotspot[hide_model].visible, true);
+																																	<!-- set(hotspot[hide_model].visible, true);  -->
+			set(hotspot[animated_hotspot].visible, true); 
 			set(hotspot[Creditos].keep, true);
 			set(hotspot[Bienvenido].keep, true);
 		</action>
@@ -92,7 +94,7 @@
 		</image>
 		<!-- <layer name="fullscreen_click" type="container" width="100%" height="100%" align="center" onclick="check_click();" /> -->
 		<!-- Layer del 3D Model -->
-		<layer name="threejs_container" vr="true" iframeurl="https://siriuzz.github.io/vtour_3dmodels/viewer.html?model=cell" type="iframe" align="center" width="80%" height="80%" visible="false" fillcolor="0xAAAAAA" />
+		<!-- <layer name="threejs_container" vr="true" iframeurl="https://siriuzz.github.io/vtour_3dmodels/viewer.html?model=cell" type="iframe" align="center" width="80%" height="80%" visible="false" fillcolor="0xAAAAAA" /> -->
 
 		<!-- Evento para ocultar el layer si se hace clic fuera -->
 
