@@ -26,7 +26,7 @@
 
 	<action name="on_intro_loaded">
 		set(hotspot[show_model].visible, false);
-																																																																																																																				<!-- set(hotspot[hide_model].visible, false); -->
+																																																																																																																																				<!-- set(hotspot[hide_model].visible, false); -->
 		<!-- set(hotspot[animated_hotspot].visible, false) -->
 		delayedcall(2,
 		tween(layer[intro_logo].alpha, 1);
@@ -52,9 +52,9 @@
 
 
 	<scene name="black_mangrove" title="Mangle Negro" onstart="" thumburl="panos/R0010050.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
-		<layer name="model_container" type="container" keep="false" bgcolor="0x000000" zorder="9997" enabled="true" visible="false" bgcapture="true" vr="true" width="80%" height="60%" align="center">
+		<layer name="model_container" type="container" keep="false" bgcolor="0x000000" zorder="0" enabled="true" visible="false" bgcapture="true" vr="true" width="90%" height="67.5%" align="center">
 			<layer name="threejs_container" iframeurl="https://siriuzz.github.io/vtour_3dmodels/viewer.html?model=cell" type="iframe" vr="true" align="center" width="100%" height="100%" visible="false" fillcolor="0xffffff" />
-			<layer name="close_3dmodel" onclick='toggle_3dmodel()' url="recursos/botoncreditos.png" keep="true" enabled="true" align="leftbottom" x="10" y="5" scale="0.4" scale.mobile="0.2"/>
+			<layer name="close_3dmodel" onclick='toggle_3dmodel()' url="recursos/botoncerrar.png" keep="true" enabled="true" align="leftbottom" x="10" y="5" scale="0.4" scale.mobile="0.2"/>
 
 		</layer>
 
@@ -64,13 +64,10 @@
 		<action name="toggle_3dmodel">
 			if(layer[threejs_container].visible == true,
 				set(layer[threejs_container].visible, false);
-				set(hotspot[hide_model].visible, false);
 				set(layer[model_container].visible, false);
 			,
 				set(layer[threejs_container].visible, true);
-				set(hotspot[hide_model].visible, true);
 				set(layer[model_container].visible, true);
-
 			);
 		</action>
 
@@ -78,14 +75,14 @@
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
 
 		<hotspot name="show_model" style="skin_animated_hotspot" ath="-23.08597589881083" atv="-7.44657373599020" scale="1.30000000000000" depth="1137.20000000000005" onloaded="do_crop_animation(64,64, 30);" onclick="toggle_3dmodel()" />
-		<hotspot name="hide_model" ath="-9.52749630749702" atv="49.50119482149891" scale="1.30000000000000" visible="false" style="skin_animated_hotspot" onloaded="do_crop_animation(64,64, 30);" depth="1664.59999999999991" onclick="toggle_3dmodel()" />
+		<!-- <hotspot name="hide_model" ath="-9.52749630749702" atv="49.50119482149891" scale="1.30000000000000" visible="false" style="skin_animated_hotspot" onloaded="do_crop_animation(64,64, 30);" depth="1664.59999999999991" onclick="toggle_3dmodel()" /> -->
 		<action name="ocultar">
 			tween(hotspot[Bienvenido].alpha, 0.0, 1.5);
 			tween(hotspot[Creditos].alpha, 0.0, 1.5);
 			set(hotspot[Creditos].enabled, false);
 			set(hotspot[Bienvenido].enabled, false);
 			set(hotspot[show_model].visible, true);
-																																																																																																																																																																																	<!-- set(hotspot[hide_model].visible, true);  -->
+																																																																																																																																																																																																									<!-- set(hotspot[hide_model].visible, true);  -->
 			set(hotspot[animated_hotspot].visible, true); 
 			set(hotspot[Creditos].keep, true);
 			set(hotspot[Bienvenido].keep, true);
