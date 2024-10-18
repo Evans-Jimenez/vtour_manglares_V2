@@ -14,7 +14,12 @@
 	<layer name="creditos" url="recursos/creditos.png" keep="true" enabled="true" align="centercenter" x="0" y="0" visible="false" alpha="1" scale="0.6" scale.mobile="0.2" onclick="set(layer[creditos].visible,false);"/>
 	<layer name="botoncreditos" url="recursos/botoncreditos.png" keep="true" enabled="true" align="leftbottom" x="10" y="5" scale="0.4" scale.mobile="0.2" onclick="set(layer[creditos].visible,true);"/>
 	<action name="flyout_hotspot"> for(set(i,0), i LT hotspot.count, inc(i), copy(hs, hotspot[get(i)]); if(hs.name != name AND hs.style == 'flyoutimage' AND (hs.flying_state == 'out' OR hs.flying_state == 'flyingout'), callwith(hs, flyout_hotspot() ); ); ); if(flying_state == 'flyingout', set(flying_state, 'flyingin'); , if(flying_state == 'flyingin', set(flying_state, 'flyingout'); ); ); if(flying_state == 'in', calc(backup_state, '0.0|' + rx + '|' + ry + '|' + rz + '|' + scale); copy(backup_zorder, zorder); set(flying_state, 'flyingout'); ); if(flying_state == 'out', set(flying_state, 'flyingin'); ); if(flying_state == 'flyingout', set(zorder, 99); tween(alpha, 1,2); tween(flying|rx|ry|rz|scale, '0.0|0.0|0.0|0.0|1.0',2, default, set(flying_state,'out'); set(capture,true); ); ); if(flying_state == 'flyingout' AND webvr.isenabled, set(zorder, 99); tween(alpha, 1 ,2); tween(flying|rx|ry|rz|scale, '1.0|0.0|0.0|0.0|0.3',2, default, set(flying_state,'in'); set(capture,true); ); delayedcall(6.0, set(visible, false); ); ); if(flying_state == 'flyingin', sub(zorder,1); tween(alpha, 0 ,2); set(capture,false); tween(flying|rx|ry|rz|scale, get(backup_state), 1, default, set(flying_state,'in'); copy(zorder,backup_zorder); ); ); if(flying_state == 'flyingin' AND webvr.isenabled, sub(zorder,1); tween(alpha, 0 ,2); set(capture,false); tween(flying|rx|ry|rz|scale, get(backup_state), 1, default, set(flying_state,'in'); copy(zorder,backup_zorder); ); ); </action>
+	<plugin name="WebVR" devices="html5" keep="true" url="plugins/webvr.js" onentervr="hide_3dmodels"/>
+	<action name="hide_3dmodels">
+		set(hotspot[modelo_cangrejo].visible, false);
+		set(hotspot[modelo_fruto].visible, false);
 
+	</action>
 	<action name="on_intro_click">
 		tween(layer[intro].alpha, 0);
 		set(layer[intro].enabled, false);
@@ -27,7 +32,7 @@
 	<action name="on_intro_loaded">
 		set(hotspot[show_model].visible, false);
 		set(hotspot[mangle_negro_pre_info].visible, false);
-																																																																																																																																																																																																																																																								<!-- set(hotspot[hide_model].visible, false); -->
+																																																																																																																																																																																																																																																																										<!-- set(hotspot[hide_model].visible, false); -->
 		<!-- set(hotspot[animated_hotspot].visible, false) -->
 		delayedcall(2,
 		tween(layer[intro_logo].alpha, 1);
@@ -73,7 +78,7 @@
 			set(hotspot[Bienvenido].enabled, false);
 			set(hotspot[show_model].visible, true);
 			set(hotspot[mangle_negro_pre_info].visible, true);
-																																																																																																																																																																																																																																																																																																																																																																																							<!-- set(hotspot[hide_model].visible, true);  -->
+																																																																																																																																																																																																																																																																																																																																																																																																																		<!-- set(hotspot[hide_model].visible, true);  -->
 			set(hotspot[animated_hotspot].visible, true); 
 			set(hotspot[Creditos].keep, true);
 			set(hotspot[Bienvenido].keep, true);
@@ -105,7 +110,7 @@
 
 		<control bouncinglimits="true" />
 		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="186.59999999999999" atv="-3.60000000000000" scale="1.30000000000000" depth="1020.20000000000005" onloaded="do_crop_animation(64,64, 30);" linkedscene="white_mangrove_2" />
-		<hotspot name="infospot" style="infospot" width="100" height="100" bgroundedge="50" ath="99.74408771117481" atv="6.28621641126942" scale="1.30000000000000" depth="1664.59999999999991" onloaded="circlepos(3,6); if(ismobilevr(), set(hotspot[infospot].visible, false), set(hotspot[infospot].visible, true));" html="Modelo 3D Cangrejo" visible="false" onclick="toggle_3dmodel()"/>
+		<hotspot name="modelo_cangrejo" style="infospot" width="100" height="100" bgroundedge="50" ath="99.74408771117481" atv="6.28621641126942" scale="1.30000000000000" depth="1664.59999999999991" onloaded="circlepos(3,6);" html="Modelo 3D Cangrejo" onclick="toggle_3dmodel()"/>
 		<layer name="model_container" type="container" keep="false" bgcolor="0x000000" zorder="0" enabled="true" visible="false" bgcapture="true" vr="true" width="90%" height="67.5%" align="center">
 			<layer name="threejs_container" iframeurl="https://siriuzz.github.io/vtour_3dmodels/viewer.html?model=cangrejo" type="iframe" vr="true" align="center" width="100%" height="100%" visible="false" fillcolor="0xffffff" />
 			<layer name="close_3dmodel" onclick='toggle_3dmodel()' url="recursos/botoncerrar.png" keep="true" enabled="true" align="leftbottom" x="10" y="5" scale="0.4" scale.mobile="0.2"/>
@@ -201,7 +206,7 @@
 
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="140.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
 		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="198.00000000000000" atv="-1.20000000000000" scale="1.30000000000000" depth="1665.20000000000005" onloaded="do_crop_animation(64,64, 30);" linkedscene="button_mangrove_1" />
-		<hotspot name="infospot" style="infospot" width="120" height="120" bgroundedge="60" ath="99.74408771117481" atv="6.28621641126942" scale="1.30000000000000" depth="1664.59999999999991" onloaded="circlepos(3,6); if(ismobilevr(), set(hotspot[infospot].visible, false), set(hotspot[infospot].visible, true));" html="Modelo 3D Fruto Mangle Blanco" onclick="toggle_3dmodel()"/>
+		<hotspot name="modelo_fruto" style="infospot" width="120" height="120" bgroundedge="60" ath="99.74408771117481" atv="6.28621641126942" scale="1.30000000000000" depth="1664.59999999999991" onloaded="circlepos(3,6);" html="Modelo 3D Fruto Mangle Blanco" onclick="toggle_3dmodel()"/>
 
 		<layer name="model_container" type="container" keep="false" bgcolor="0x000000" zorder="0" enabled="true" visible="false" bgcapture="true" vr="true" width="90%" height="67.5%" align="center">
 			<layer name="threejs_container" iframeurl="https://siriuzz.github.io/vtour_3dmodels/viewer.html?model=manglar_fruto" type="iframe" vr="true" align="center" width="100%" height="100%" visible="false" fillcolor="0xffffff" />
