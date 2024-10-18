@@ -27,7 +27,7 @@
 	<action name="on_intro_loaded">
 		set(hotspot[show_model].visible, false);
 		set(hotspot[mangle_negro_pre_info].visible, false);
-																																																																																																																																																																										<!-- set(hotspot[hide_model].visible, false); -->
+																																																																																																																																																																																																																																																								<!-- set(hotspot[hide_model].visible, false); -->
 		<!-- set(hotspot[animated_hotspot].visible, false) -->
 		delayedcall(2,
 		tween(layer[intro_logo].alpha, 1);
@@ -38,32 +38,13 @@
 	<!-- customize skin settings: maps, gyro, webvr, thumbnails, tooltips, layout, design, ... -->
 	<skin_settings maps="true" maps_type="google" maps_bing_api_key="" maps_google_api_key="" maps_zoombuttons="false" maps_loadonfirstuse="true" gyro="true" gyro_keeplookingdirection="false" webvr="true" webvr_keeplookingdirection="true" webvr_prev_next_hotspots="true" autotour="false" littleplanetintro="true" followmousecontrol="false" title="true" thumbs="true" thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop="0|40|240|160" thumbs_opened="false" thumbs_text="false" thumbs_dragging="true" thumbs_onhoverscrolling="false" thumbs_scrollbuttons="false" thumbs_scrollindicator="false" thumbs_loop="false" tooltips_buttons="false" tooltips_thumbs="false" tooltips_hotspots="false" tooltips_mapspots="false" deeplinking="false" loadscene_flags="MERGE" loadscene_blend="OPENBLEND(0.5, 0.0, 0.75, 0.05, linear)" loadscene_blend_prev="SLIDEBLEND(0.5, 180, 0.75, linear)" loadscene_blend_next="SLIDEBLEND(0.5,   0, 0.75, linear)" loadingtext="" layout_width="100%" layout_maxwidth="814" controlbar_width="-24" controlbar_height="40" controlbar_offset="20" controlbar_offset_closed="-40" controlbar_overlap.no-fractionalscaling="10" controlbar_overlap.fractionalscaling="0" design_skin_images="vtourskin.png" design_bgcolor="0x2D3E50" design_bgalpha="0.8" design_bgborder="0" design_bgroundedge="1" design_bgshadow="0 4 10 0x000000 0.3" design_thumbborder_bgborder="3 0xFFFFFF 1.0" design_thumbborder_padding="2" design_thumbborder_bgroundedge="0" design_text_css="color:#FFFFFF; font-family:Arial;" design_text_shadow="1" />
 
-	<!--
-	    For an alternative skin design either change the <skin_settings> values 
-	    from above or optionally include one of the predefined designs from below.
-	-->
-	<!-- <include url="skin/vtourskin_design_flat_light.xml" /> -->
-	<!-- <include url="skin/vtourskin_design_glass.xml" /> -->
-	<!-- <include url="skin/vtourskin_design_ultra_light.xml" /> -->
-	<!-- <include url="skin/vtourskin_design_117.xml" /> -->
-	<!-- <include url="skin/vtourskin_design_117round.xml" /> -->
-	<!-- <include url="skin/vtourskin_design_black.xml" /> -->
-
-<!-- nadir logo (a distorted hotspot) -->
-	<hotspot name="nadirlogo" keep="true"
-	         url="recursos/logo-refodige.png"
-	         ath="0"
-	         atv="90"
-	         distorted="true"
-	         scale="2.0"
-	         rotate="0.0"
-	         onclick="openurl('https://refodige.intec.edu.do/');"
-	         />
+	<!-- nadir logo (a distorted hotspot) -->
+	<hotspot name="nadirlogo" keep="true" url="recursos/logo-refodige.png" ath="0" atv="90" distorted="true" scale="2.0" rotate="0.0" onclick="openurl('https://refodige.intec.edu.do/');" />
 
 	<!-- onviewchange event - update logo rotation on pano rotation -->
 	<events name="nadirlogo" keep="true" onviewchange="copy(hotspot[nadirlogo].rotate, view.hlookat);" />
 
-		<action name="toggle_3dmodel">
+	<action name="toggle_3dmodel">
 			if(layer[threejs_container].visible == true,
 				set(layer[threejs_container].visible, false);
 				set(layer[model_container].visible, false);
@@ -71,10 +52,10 @@
 				set(layer[threejs_container].visible, true);
 				set(layer[model_container].visible, true);
 			);
-		</action>
+	</action>
 
 	<scene name="black_mangrove" title="Mangle Negro" onstart="" thumburl="panos/R0010050.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
-		
+
 
 		<!-- <layer name="intro" type="container" keep="true" width="100%" height="100%" bgcolor="0x000000" bgalpha="0.8" zorder="9999" enabled="true" bgcapture="true" vr="true">
 			<layer name="threejs_container" keep="true" iframeurl="https://siriuzz.github.io/vtour_3dmodels/viewer.html?model=cell" zorder="10" enabled="true" type="iframe" vr="true" align="center" width="60%" height="30%" visible="false" fillcolor="0xffffff" />
@@ -92,7 +73,7 @@
 			set(hotspot[Bienvenido].enabled, false);
 			set(hotspot[show_model].visible, true);
 			set(hotspot[mangle_negro_pre_info].visible, true);
-																																																																																																																																																																																																																																																																		<!-- set(hotspot[hide_model].visible, true);  -->
+																																																																																																																																																																																																																																																																																																																																																																																							<!-- set(hotspot[hide_model].visible, true);  -->
 			set(hotspot[animated_hotspot].visible, true); 
 			set(hotspot[Creditos].keep, true);
 			set(hotspot[Bienvenido].keep, true);
@@ -124,7 +105,7 @@
 
 		<control bouncinglimits="true" />
 		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="186.59999999999999" atv="-3.60000000000000" scale="1.30000000000000" depth="1020.20000000000005" onloaded="do_crop_animation(64,64, 30);" linkedscene="white_mangrove_2" />
-		<hotspot name="infospot" style="infospot" ath="99.74408771117481" atv="6.28621641126942" scale="1.30000000000000" depth="1664.59999999999991" onloaded="circlepos(3,6);" html="Recurso 3D" onclick="toggle_3dmodel()"/>
+		<hotspot name="infospot" style="infospot" width="100" height="100" bgroundedge="50" ath="99.74408771117481" atv="6.28621641126942" scale="1.30000000000000" depth="1664.59999999999991" onloaded="circlepos(3,6); if(ismobilevr(), set(hotspot[infospot].visible, false), set(hotspot[infospot].visible, true));" html="Modelo 3D Cangrejo" visible="false" onclick="toggle_3dmodel()"/>
 		<layer name="model_container" type="container" keep="false" bgcolor="0x000000" zorder="0" enabled="true" visible="false" bgcapture="true" vr="true" width="90%" height="67.5%" align="center">
 			<layer name="threejs_container" iframeurl="https://siriuzz.github.io/vtour_3dmodels/viewer.html?model=cangrejo" type="iframe" vr="true" align="center" width="100%" height="100%" visible="false" fillcolor="0xffffff" />
 			<layer name="close_3dmodel" onclick='toggle_3dmodel()' url="recursos/botoncerrar.png" keep="true" enabled="true" align="leftbottom" x="10" y="5" scale="0.4" scale.mobile="0.2"/>
@@ -220,15 +201,16 @@
 
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="140.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
 		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="198.00000000000000" atv="-1.20000000000000" scale="1.30000000000000" depth="1665.20000000000005" onloaded="do_crop_animation(64,64, 30);" linkedscene="button_mangrove_1" />
-		<hotspot name="infospot" style="infospot" ath="99.74408771117481" atv="6.28621641126942" scale="1.30000000000000" depth="1664.59999999999991" onloaded="circlepos(3,6);" html="Recurso 3D" onclick="toggle_3dmodel()"/>
+		<hotspot name="infospot" style="infospot" width="120" height="120" bgroundedge="60" ath="99.74408771117481" atv="6.28621641126942" scale="1.30000000000000" depth="1664.59999999999991" onloaded="circlepos(3,6); if(ismobilevr(), set(hotspot[infospot].visible, false), set(hotspot[infospot].visible, true));" html="Modelo 3D Fruto Mangle Blanco" onclick="toggle_3dmodel()"/>
 
 		<layer name="model_container" type="container" keep="false" bgcolor="0x000000" zorder="0" enabled="true" visible="false" bgcapture="true" vr="true" width="90%" height="67.5%" align="center">
 			<layer name="threejs_container" iframeurl="https://siriuzz.github.io/vtour_3dmodels/viewer.html?model=manglar_fruto" type="iframe" vr="true" align="center" width="100%" height="100%" visible="false" fillcolor="0xffffff" />
 			<layer name="close_3dmodel" onclick='toggle_3dmodel()' url="recursos/botoncerrar.png" keep="true" enabled="true" align="leftbottom" x="10" y="5" scale="0.4" scale.mobile="0.2"/>
+			<layer name="model_title" type="text" html="fruto" keep="true" enabled="true" align="leftbottom" x="927" y="583" scale="2" scale.mobile="0.2"/>
 		</layer>
 		<hotspot name="mangle_blanco_pre_info" style="flyoutimage" scale="0.40680000000001" depth="1000" rx="-0.30000000000000" ry="0" rz="2.94999999999996" ox="0.00000000000000" oy="0.00000000000000" tx="-651.50000000000091" ty="355.79999999999683" url="recursos/mangle_blanco_pre_info.png" onclick="set(hotspot[mangle_blanco_info].visible, true); set(hotspot[mangle_blanco_pre_info].visible, false);" />
 		<hotspot name="mangle_blanco_info" style="flyoutimage" scale="0.5" url="recursos/mangle_blanco_info.png" flying_state="out" visible="false" onclick="set(hotspot[mangle_blanco_info].visible, false); set(hotspot[mangle_blanco_pre_info].visible, true);" />
-		
+
 		<preview url="panos/R0010057.tiles/preview.jpg" />
 
 		<image prealign="6.291726|0.017781|-0.323546">
