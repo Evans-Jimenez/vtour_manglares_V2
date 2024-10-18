@@ -14,10 +14,10 @@
 	calc(local.frames, xframes * ((caller.imageheight / frameheight) BOR 0));
 	def(local.frame, integer, 0);
 
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																								<!-- set the first frame -->
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																				<!-- set the first frame -->
 	calc(caller.crop, '0|0|' + framewidth + '|' + frameheight);
 
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																								<!-- do the animation -->
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																				<!-- do the animation -->
 	setinterval(calc('crop_anim_' + caller.name), calc(1.0 / framerate),
 		if(caller.loaded,
 			inc(frame);
@@ -29,10 +29,50 @@
 			mul(ypos, frameheight);
 			calc(caller.crop, xpos + '|' + ypos + '|' + framewidth + '|' + frameheight);
 			,
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																							<!-- stop the interval when the hotspot gets removed -->
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																			<!-- stop the interval when the hotspot gets removed -->
 			clearinterval(calc('crop_anim_' + caller.name));
 			);
 			);
+	</action>
+	<!-- use a <style> to share the same attriubtes for all hotspots -->
+	<style name="flyoutimage" renderer="webgl" distorted="true" flying="0.0" backup_state="" backup_zorder="" flying_state="in" capture="true" onclick="flyout_hotspot()" />
+
+	<!-- flyout hotspot actions -->
+	<action name="flyout_hotspot">
+			for(set(i,0), i LT hotspot.count, inc(i),
+				copy(hs, hotspot[get(i)]);
+				if(hs.name != name AND hs.style == 'flyoutimage' AND (hs.flying_state == 'out' OR hs.flying_state == 'flyingout'),
+					callwith(hs, flyout_hotspot() );
+				  );
+			  );
+	
+			if(flying_state == 'flyingout',
+				set(flying_state, 'flyingin');
+			  ,
+				if(flying_state == 'flyingin',
+					set(flying_state, 'flyingout');
+					);
+			  );
+	
+			if(flying_state == 'in',
+				calc(backup_state, '0.0|' + rx + '|' + ry + '|' + rz + '|' + scale);
+				copy(backup_zorder, zorder);
+				set(flying_state, 'flyingout');
+			  );
+	
+			if(flying_state == 'out',
+				set(flying_state, 'flyingin');
+			  );
+	
+			if(flying_state == 'flyingout',
+				set(zorder, 99);
+				tween(flying|rx|ry|rz|scale, ('1.0|0.0|0.0|0.0|'+0.9*min(stagewidth/sourcewidth,stageheight/sourceheight)), 0.5, default, set(flying_state,'out'); );
+			  );
+	
+			if(flying_state == 'flyingin',
+				sub(zorder,1);
+				tween(flying|rx|ry|rz|scale, get(backup_state), 0.5, default, set(flying_state,'in'); copy(zorder,backup_zorder); );
+			  );
 	</action>
 
 	<!-- save the url path of this xml file (the url value will be adjusted during xml parsing) -->
@@ -71,25 +111,25 @@
 		set(layer[webvr_enterbutton], align=center, y=0, padding='10 20', css=calc(skin_settings.design_text_css + ' font-size:20px;text-align:center;'), html=calc((global.title ? '[i]'+global.title+'[/i][br]' : '') + '[span style="font-size:40px"]Enter VR[span]'), 
 		);
 		
-						<!-- add a button to show the normal skin and hide the enter vr button -->
+																		<!-- add a button to show the normal skin and hide the enter vr button -->
 		addlayer('skin_hide_entervrbutton', button);
 		set(button, keep=true, type=text, parent=webvr_enterbutton, align=bottom, edge=top, y=-60, text='Continue normal viewing...', bgalpha=0, css='color:#FFFFFF; text-decoration:underline;', onclick='removelayer(webvr_enterbutton); skin_showskin();'
 		);
 		
-						<!-- hide the skin -->
+																		<!-- hide the skin -->
 		skin_hideskin(instant);
 	</action>
 
 	<action name="skin_webvr_onavailable" scope="local">
 		if(device.mobilevr == false,
-							<!-- remove the enter vr button from the webvr.xml, use the one from the skin -->
+																			<!-- remove the enter vr button from the webvr.xml, use the one from the skin -->
 			removelayer(webvr_enterbutton);
 		);
 		
-						<!-- update the skin buttons to add the skin vr button -->
+																		<!-- update the skin buttons to add the skin vr button -->
 		skin_arrange_buttons();
 			
-						<!-- call the original onavailable event from the webvr.xml -->
+																		<!-- call the original onavailable event from the webvr.xml -->
 		webvr_onavailable();
 	</action>
 
@@ -124,13 +164,13 @@
 			if(aspect != global.skin_webvr_lastaspect OR setupcall == true,
 				copy(global.skin_webvr_lastaspect, aspect);
 				if(stagewidth GT stageheight,
-									<!-- landscape orientation - use stereo rendering and a direct/fast gyro sensor mode -->
+																					<!-- landscape orientation - use stereo rendering and a direct/fast gyro sensor mode -->
 					set(display.stereo, true);
 					set(webvr.mobilevr_sensor_mode, 3);
 					webvr.update();
 					tween(layer[webvr_rotate_to_landscape_request].alpha, 0.0, 0.0);
 				  ,
-									<!-- portrait orientation - use normal rendering and a smoother/slower gyro sensor mode -->
+																					<!-- portrait orientation - use normal rendering and a smoother/slower gyro sensor mode -->
 					set(display.stereo, false);
 					set(webvr.mobilevr_sensor_mode, 1);
 					webvr.update();
@@ -225,18 +265,18 @@
 		transitiontweentype = "easeoutquad";
 		
 		if(caller AND caller.ishotspot,
-							<!-- called from a hotspot, move toward the hotspot -->
+																			<!-- called from a hotspot, move toward the hotspot -->
 			if(caller.depth == 0,
-								<!-- 3d placed hotspot -->
+																				<!-- 3d placed hotspot -->
 				set3dtransition("image", caller.tx,caller.ty,caller.tz, motionblur, hlookatoffset, transitiondelay, transitiontime, transitiontweentype);
 			  ,
-								<!-- a hotspot with a spherical position -->
+																				<!-- a hotspot with a spherical position -->
 				caller.getcenter(h,v);
 				if(v GT -50 AND v LT +50 AND caller.depth GT 120, set(v,0));
 				set3dtransition("sphere", h,v,(min(caller.depth,1000)), motionblur, hlookatoffset, transitiondelay, transitiontime, transitiontweentype);
 			);
 		  ,
-							<!-- called from a layer or a script, recenter at the new pano center (3d-model/depthmap panos only) -->
+																			<!-- called from a layer or a script, recenter at the new pano center (3d-model/depthmap panos only) -->
 			if(image.depthmap.url,
 				set3dtransition("image", 0,0,0, motionblur, hlookatoffset, transitiondelay, transitiontime, transitiontweentype);
 			);
@@ -355,7 +395,7 @@
 		<!-- load first scene -->
 		loadscene(calc(isset(startscene) ? startscene : 0), null, MERGE);
 	
-						<!-- set optional startup lookat -->
+																		<!-- set optional startup lookat -->
 		if(isset(startlookat),
 			txtsplit(startlookat, ',', hlookat,vlookat,fov,distortion,architectural);
 			lookat(get(hlookat),get(vlookat),get(fov),get(distortion),get(architectural));
@@ -423,7 +463,7 @@
 		set(thumbcount, 0);
 		for(set(i,0), i LT scene.count, inc(i),
 			if(isvalue(scene[get(i)].thumburl) AND scene[get(i)].skipthumb != true,
-								<!-- link thumbarray[i1] to scene[i2] -->
+																				<!-- link thumbarray[i1] to scene[i2] -->
 				set(thumbarray[get(thumbcount)], get(scene[get(i)]));
 				set(scene[get(i)].sceneindex, get(i));
 				set(scene[get(i)].thumbindex, get(thumbcount));
@@ -534,16 +574,16 @@
 
 	<action name="skin_lookat" scope="local" args="h, v, fov">
 		if(webvr.isenabled,
-							<!-- adjust the VR prev/next hotspots for the view change -->
+																			<!-- adjust the VR prev/next hotspots for the view change -->
 			calc(hlookat_offset, h - view.hlookat);
 			add(hotspot[skin_webvr_prev_scene].ath, hlookat_offset);
 			add(hotspot[skin_webvr_next_scene].ath, hlookat_offset);
 		);
 		if(plugin[skin_gyro].isavailable AND plugin[skin_gyro].enabled,
-							<!-- reset the gyro tracking -->
+																			<!-- reset the gyro tracking -->
 			plugin[skin_gyro].resetsensor(get(h));
 		);
-						<!-- change the view -->
+																		<!-- change the view -->
 		lookat(get(h), get(v), get(fov));
 	</action>
 
@@ -798,16 +838,16 @@
 
 	<action name="skin_showloading" scope="private:SKINLOADINGCHECK" args="state">
 		if(state == true AND global.display.stereo == false,
-							<!-- start loading -->
+																			<!-- start loading -->
 			set(loadingstate, 1);
 			delayedcall(2.0,
 				if(loadingstate == 1,
-									<!-- after 2.0 seconds still not loaded? => show the loading text -->
+																					<!-- after 2.0 seconds still not loaded? => show the loading text -->
 					set(global.layer[skin_loadingtext].visible, true);
 				);
 			);
 		  ,
-							<!-- stop loading -->
+																			<!-- stop loading -->
 			set(loadingstate, 2);
 			set(global.layer[skin_loadingtext].visible, false);
 		);
@@ -924,10 +964,10 @@
 
 
 	<action name="skin_keydown_event">
-		if(keycode == 33, skin_nextscene_loop(-1) );            					<!-- Page Up   - previous scene -->
-		if(keycode == 34, skin_nextscene_loop(+1) );            					<!-- Page Dowm - next scene -->
-		if(keycode == 35, skin_gotoscene(calc(scene.count-1)) );					<!-- End       - last scene -->
-		if(keycode == 36, skin_gotoscene(0) );                  					<!-- Home/Pos1 - first scene -->
+		if(keycode == 33, skin_nextscene_loop(-1) );            																	<!-- Page Up   - previous scene -->
+		if(keycode == 34, skin_nextscene_loop(+1) );            																	<!-- Page Dowm - next scene -->
+		if(keycode == 35, skin_gotoscene(calc(scene.count-1)) );																	<!-- End       - last scene -->
+		if(keycode == 36, skin_gotoscene(0) );                  																	<!-- Home/Pos1 - first scene -->
 	</action>
 
 
