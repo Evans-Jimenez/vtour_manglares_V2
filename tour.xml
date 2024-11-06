@@ -14,7 +14,7 @@
 	<layer name="creditos" url="recursos/creditos.png" keep="true" enabled="true" align="centercenter" x="0" y="0" visible="false" alpha="1" scale="0.6" scale.mobile="0.2" onclick="set(layer[creditos].visible,false);"/>
 	<layer name="botoncreditos" url="recursos/botoncreditos.png" keep="true" enabled="true" align="leftbottom" x="10" y="5" scale="0.4" scale.mobile="0.2" onclick="set(layer[creditos].visible,true);"/>
 	<action name="flyout_hotspot"> for(set(i,0), i LT hotspot.count, inc(i), copy(hs, hotspot[get(i)]); if(hs.name != name AND hs.style == 'flyoutimage' AND (hs.flying_state == 'out' OR hs.flying_state == 'flyingout'), callwith(hs, flyout_hotspot() ); ); ); if(flying_state == 'flyingout', set(flying_state, 'flyingin'); , if(flying_state == 'flyingin', set(flying_state, 'flyingout'); ); ); if(flying_state == 'in', calc(backup_state, '0.0|' + rx + '|' + ry + '|' + rz + '|' + scale); copy(backup_zorder, zorder); set(flying_state, 'flyingout'); ); if(flying_state == 'out', set(flying_state, 'flyingin'); ); if(flying_state == 'flyingout', set(zorder, 99); tween(alpha, 1,2); tween(flying|rx|ry|rz|scale, '0.0|0.0|0.0|0.0|1.0',2, default, set(flying_state,'out'); set(capture,true); ); ); if(flying_state == 'flyingout' AND webvr.isenabled, set(zorder, 99); tween(alpha, 1 ,2); tween(flying|rx|ry|rz|scale, '1.0|0.0|0.0|0.0|0.3',2, default, set(flying_state,'in'); set(capture,true); ); delayedcall(6.0, set(visible, false); ); ); if(flying_state == 'flyingin', sub(zorder,1); tween(alpha, 0 ,2); set(capture,false); tween(flying|rx|ry|rz|scale, get(backup_state), 1, default, set(flying_state,'in'); copy(zorder,backup_zorder); ); ); if(flying_state == 'flyingin' AND webvr.isenabled, sub(zorder,1); tween(alpha, 0 ,2); set(capture,false); tween(flying|rx|ry|rz|scale, get(backup_state), 1, default, set(flying_state,'in'); copy(zorder,backup_zorder); ); ); </action>
-	<plugin name="WebVR" devices="html5" keep="true" url="plugins/webvr.js" />
+	<plugin name="WebVR" devices="html5" keep="true" url="plugins/webvr.js" onavailable="checkVRMode()" />
 	<!-- <action name="hide_3dmodels">
 		set(hotspot[modelo_cangrejo].visible, false);
 		set(hotspot[modelo_fruto].visible, false);
@@ -32,7 +32,7 @@
 	<action name="on_intro_loaded">
 		set(hotspot[show_model].visible, false);
 		set(hotspot[mangle_negro_pre_info].visible, false);
-																																																																																																																																																																																																																																																																																																																																																																														<!-- set(hotspot[hide_model].visible, false); -->
+																																																																																																																																																																																																																																																																																																																																																																																																														<!-- set(hotspot[hide_model].visible, false); -->
 		<!-- set(hotspot[animated_hotspot].visible, false) -->
 		delayedcall(2,
 		tween(layer[intro_logo].alpha, 1);
@@ -62,25 +62,24 @@
 	</action>
 
 	<action name="checkVRMode">
-		if(isvr === true,
-			show_vr_button();
-		,
+		if(isvrbrowser === true,
 			hide_vr_button();
+		,
+			show_vr_button();
 		);
 	</action>
 
 	<action name="show_vr_button">
-		set(layer[model_container].visible, true);
-		set(layer[threejs_container].visible, true);
+		set(hotspot[modelo_cangrejo].visible, true);
+		set(hotspot[modelo_fruto].visible, true);
 	</action>
 
 	<action name="hide_vr_button">
-		set(layer[model_container].visible, false);
-		set(layer[threejs_container].visible, false);
-		set(layer[model_container].visible, false);
+		set(hotspot[modelo_cangrejo].visible, false);
+		set(hotspot[modelo_fruto].visible, false);
 	</action>
 
-	<scene name="black_mangrove" title="Mangle Negro" onstart="" thumburl="panos/R0010050.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+	<scene name="black_mangrove" title="Mangle Negro" thumburl="panos/R0010050.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 
 
 		<!-- <layer name="intro" type="container" keep="true" width="100%" height="100%" bgcolor="0x000000" bgalpha="0.8" zorder="9999" enabled="true" bgcapture="true" vr="true">
@@ -99,7 +98,7 @@
 			set(hotspot[Bienvenido].enabled, false);
 			set(hotspot[show_model].visible, true);
 			set(hotspot[mangle_negro_pre_info].visible, true);
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																								<!-- set(hotspot[hide_model].visible, true);  -->
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																								<!-- set(hotspot[hide_model].visible, true);  -->
 			set(hotspot[animated_hotspot].visible, true); 
 			set(hotspot[Creditos].keep, true);
 			set(hotspot[Bienvenido].keep, true);
