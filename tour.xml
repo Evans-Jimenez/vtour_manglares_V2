@@ -32,7 +32,7 @@
 	<action name="on_intro_loaded">
 		set(hotspot[show_model].visible, false);
 		set(hotspot[mangle_negro_pre_info].visible, false);
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																												<!-- set(hotspot[hide_model].visible, false); -->
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																														<!-- set(hotspot[hide_model].visible, false); -->
 		<!-- set(hotspot[animated_hotspot].visible, false) -->
 		delayedcall(2,
 		tween(layer[intro_logo].alpha, 1);
@@ -98,7 +98,7 @@
 			set(hotspot[Bienvenido].enabled, false);
 			set(hotspot[show_model].visible, true);
 			set(hotspot[mangle_negro_pre_info].visible, true);
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																					<!-- set(hotspot[hide_model].visible, true);  -->
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																								<!-- set(hotspot[hide_model].visible, true);  -->
 			set(hotspot[animated_hotspot].visible, true); 
 			set(hotspot[Creditos].keep, true);
 			set(hotspot[Bienvenido].keep, true);
@@ -376,7 +376,7 @@
 		<image prealign="5.627404|0.074481|1.227278">
 			<cube url="panos/R0010066.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,768,1664" />
 		</image>
-		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="227.40000000000001" atv="0.00000000000000" scale="1.30000000000000" depth="1665.20000000000005" onloaded="do_crop_animation(64,64, 30);" linkedscene="close_up_2" />
+		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="227.40000000000001" atv="0.00000000000000" scale="1.30000000000000" depth="1665.20000000000005" onloaded="do_crop_animation(64,64, 30);" linkedscene="finale" />
 
 	</scene>
 	<scene name="finale" title="Agradecimientos" onstart="" thumburl="recursos/agradecimientos.png" lat="18.21359167" lng="-70.53562222" alt="27.46" heading="0.0">
