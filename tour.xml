@@ -32,7 +32,7 @@
 	<action name="on_intro_loaded">
 		set(hotspot[show_model].visible, false);
 		set(hotspot[mangle_negro_pre_info].visible, false);
-																																																																																																																																																																																																																																																																																																																																																																<!-- set(hotspot[hide_model].visible, false); -->
+																																																																																																																																																																																																																																																																																																																																																																														<!-- set(hotspot[hide_model].visible, false); -->
 		<!-- set(hotspot[animated_hotspot].visible, false) -->
 		delayedcall(2,
 		tween(layer[intro_logo].alpha, 1);
@@ -58,9 +58,26 @@
 				set(layer[threejs_container].visible, true);
 				set(layer[model_container].visible, true);
 				enterVR();
-			);
+			);			
+	</action>
 
-			
+	<action name="checkVRMode">
+		if(isvr === true,
+			show_vr_button();
+		,
+			hide_vr_button();
+		);
+	</action>
+
+	<action name="show_vr_button">
+		set(layer[model_container].visible, true);
+		set(layer[threejs_container].visible, true);
+	</action>
+
+	<action name="hide_vr_button">
+		set(layer[model_container].visible, false);
+		set(layer[threejs_container].visible, false);
+		set(layer[model_container].visible, false);
 	</action>
 
 	<scene name="black_mangrove" title="Mangle Negro" onstart="" thumburl="panos/R0010050.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
@@ -82,7 +99,7 @@
 			set(hotspot[Bienvenido].enabled, false);
 			set(hotspot[show_model].visible, true);
 			set(hotspot[mangle_negro_pre_info].visible, true);
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																			<!-- set(hotspot[hide_model].visible, true);  -->
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																								<!-- set(hotspot[hide_model].visible, true);  -->
 			set(hotspot[animated_hotspot].visible, true); 
 			set(hotspot[Creditos].keep, true);
 			set(hotspot[Bienvenido].keep, true);
@@ -110,14 +127,14 @@
 
 	</scene>
 
-	<scene name="red_mangrove_beach_1" title="Playa Mangle Rojo" onstart="" thumburl="panos/R0010051.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+	<scene name="red_mangrove_beach_1" title="Playa Mangle Rojo" onstart="checkVRMode()" thumburl="panos/R0010051.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 
 		<control bouncinglimits="true" />
 		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="186.59999999999999" atv="-3.60000000000000" scale="1.30000000000000" depth="1020.20000000000005" onloaded="do_crop_animation(64,64, 30);" linkedscene="white_mangrove_2" />
 		<hotspot name="modelo_cangrejo" style="infospot" width="100" height="100" bgroundedge="50" ath="99.74408771117481" atv="6.28621641126942" scale="1.30000000000000" depth="1664.59999999999991" onloaded="circlepos(3,6);" html="Modelo 3D Cangrejo" onclick="toggle_3dmodel()"/>
-		<layer name="model_container" type="container" keep="false" bgcolor="0x000000" zorder="0" enabled="true" visible="false" bgcapture="true" vr="true" width="90%" height="67.5%" align="center">
-			<layer name="threejs_container" iframeurl="https://siriuzz.github.io/vtour_3dmodels/viewer.html?model=cangrejo" type="iframe" vr="true" align="center" width="100%" height="100%" visible="false" fillcolor="0xffffff" />
-			<layer name="close_3dmodel" onclick='toggle_3dmodel()' url="recursos/botoncerrar.png" keep="true" enabled="true" align="leftbottom" x="10" y="5" scale="0.4" scale.mobile="0.2"/>
+		<layer name="model_container" type="container" keep="false" bgcolor="0x000000" zorder="0" enabled="true" visible="false" bgcapture="true" width="90%" height="67.5%" align="center">
+			<layer name="threejs_container" iframeurl="https://siriuzz.github.io/vtour_3dmodels/viewer.html?model=cangrejo" type="iframe" align="center" width="100%" height="100%" visible="false" fillcolor="0xffffff" />
+			<layer name="close_3dmodel" onclick='toggle_3dmodel()' url="recursos/botoncerrar.png" align="leftbottom" x="10" y="5" scale="0.4" scale.mobile="0.2"/>
 		</layer>
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120.0" maxpixelzoom="2.0" fovmin="34.143934" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
 
