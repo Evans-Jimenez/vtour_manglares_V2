@@ -32,7 +32,7 @@
 	<action name="on_intro_loaded">
 		set(hotspot[show_model].visible, false);
 		set(hotspot[mangle_negro_pre_info].visible, false);
-																																																																																																																																																																																																																																																																																																																<!-- set(hotspot[hide_model].visible, false); -->
+																																																																																																																																																																																																																																																																																																																								<!-- set(hotspot[hide_model].visible, false); -->
 		<!-- set(hotspot[animated_hotspot].visible, false) -->
 		delayedcall(2,
 		tween(layer[intro_logo].alpha, 1);
@@ -82,7 +82,7 @@
 			set(hotspot[Bienvenido].enabled, false);
 			set(hotspot[show_model].visible, true);
 			set(hotspot[mangle_negro_pre_info].visible, true);
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																											<!-- set(hotspot[hide_model].visible, true);  -->
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																							<!-- set(hotspot[hide_model].visible, true);  -->
 			set(hotspot[animated_hotspot].visible, true); 
 			set(hotspot[Creditos].keep, true);
 			set(hotspot[Bienvenido].keep, true);
@@ -295,6 +295,7 @@
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
 		<hotspot name="mangle_rojo_pre_info" style="flyoutimage" scale="0.42920000000000" depth="1000" rx="0" ry="-7.80000000000000" rz="0" ox="0.00000000000000" oy="0.00000000000000" tx="-814.79999999999984" ty="147.59999999999999" url="recursos/mangle_rojo_pre_info.png" onclick="set(hotspot[mangle_rojo_info].visible, true); set(hotspot[mangle_rojo_pre_info].visible, false);" />
 		<hotspot name="mangle_rojo_info" style="flyoutimage" scale="0.5" url="recursos/mangle_rojo_info.png" flying_state="out" visible="false" onclick="set(hotspot[mangle_rojo_info].visible, false); set(hotspot[mangle_rojo_pre_info].visible, true);" />
+		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="227.40000000000001" atv="0.00000000000000" scale="1.30000000000000" depth="1665.20000000000005" onloaded="do_crop_animation(64,64, 30);" linkedscene="close_up_2" />
 
 		<preview url="panos/R0010062.tiles/preview.jpg" />
 
@@ -357,35 +358,36 @@
 		<image prealign="5.627404|0.074481|1.227278">
 			<cube url="panos/R0010066.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,768,1664" />
 		</image>
+		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="227.40000000000001" atv="0.00000000000000" scale="1.30000000000000" depth="1665.20000000000005" onloaded="do_crop_animation(64,64, 30);" linkedscene="close_up_2" />
 
 	</scene>
 
-	<scene name="partial_pano_1" title="Raíces" onstart="" thumburl="panos/pano_1.jpg" lat="18.21359167" lng="-70.53562222" alt="27.46" heading="0.0">
+	<!-- <scene name="partial_pano_1" title="Raíces" onstart="" thumburl="panos/pano_1.jpg" lat="18.21359167" lng="-70.53562222" alt="27.46" heading="0.0">
 
 		<control bouncinglimits="false" />
 
 		<view hlookat="0.0" vlookat="0.0" fovtype="VFOV" fov="140.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
 
-		<!-- <preview url="panos/R0010066.tiles/preview.jpg" /> -->
+		 <preview url="panos/R0010066.tiles/preview.jpg" />
 
 		<image hfov="156.00" vfov="47.058530" voffset="8.97">
 			<sphere url="panos/pano_1.jpg" />
 		</image>
 
-	</scene>
+	</scene> -->
 
-	<scene name="partial_pano_2" title="Raíces" onstart="" thumburl="panos/pano_2.jpg" lat="18.21359167" lng="-70.53562222" alt="27.46" heading="0.0">
+	<!-- <scene name="partial_pano_2" title="Raíces" onstart="" thumburl="panos/pano_2.jpg" lat="18.21359167" lng="-70.53562222" alt="27.46" heading="0.0">
 
 		<control bouncinglimits="false" />
 
 		<view hlookat="0.0" vlookat="0.0" fovtype="VFOV" fov="140.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
 
-		<!-- <preview url="panos/R0010066.tiles/preview.jpg" /> -->
+		<preview url="panos/R0010066.tiles/preview.jpg" />
 
 		<image hfov="156.00" vfov="47.058530" voffset="8.97">
 			<sphere url="panos/pano_2.jpg" />
 		</image>
 
-	</scene>
+	</scene> -->
 
 </krpano>
