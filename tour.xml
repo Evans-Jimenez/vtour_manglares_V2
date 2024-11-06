@@ -32,7 +32,7 @@
 	<action name="on_intro_loaded">
 		set(hotspot[show_model].visible, false);
 		set(hotspot[mangle_negro_pre_info].visible, false);
-																																																																																																																																																																																																																																																																																																														<!-- set(hotspot[hide_model].visible, false); -->
+																																																																																																																																																																																																																																																																																																																<!-- set(hotspot[hide_model].visible, false); -->
 		<!-- set(hotspot[animated_hotspot].visible, false) -->
 		delayedcall(2,
 		tween(layer[intro_logo].alpha, 1);
@@ -82,7 +82,7 @@
 			set(hotspot[Bienvenido].enabled, false);
 			set(hotspot[show_model].visible, true);
 			set(hotspot[mangle_negro_pre_info].visible, true);
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																								<!-- set(hotspot[hide_model].visible, true);  -->
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																											<!-- set(hotspot[hide_model].visible, true);  -->
 			set(hotspot[animated_hotspot].visible, true); 
 			set(hotspot[Creditos].keep, true);
 			set(hotspot[Bienvenido].keep, true);
@@ -215,7 +215,7 @@
 		<layer name="model_container" type="container" keep="false" bgcolor="0x000000" zorder="0" enabled="true" visible="false" bgcapture="true" vr="true" width="90%" height="67.5%" align="center">
 			<layer name="threejs_container" iframeurl="https://siriuzz.github.io/vtour_3dmodels/viewer.html?model=manglar_fruto" type="iframe" vr="true" align="center" width="100%" height="100%" visible="false" fillcolor="0xffffff" />
 			<layer name="close_3dmodel" onclick='toggle_3dmodel()' url="recursos/botoncerrar.png" keep="true" enabled="true" align="leftbottom" x="10" y="5" scale="0.4" scale.mobile="0.2"/>
-			<layer name="model_title" type="text" html="fruto" keep="true" enabled="true" align="leftbottom" x="927" y="583" scale="2" scale.mobile="0.2"/>
+			<!-- <layer name="model_title" type="text" html="fruto" keep="true" enabled="true" align="leftbottom" x="927" y="583" scale="2" scale.mobile="0.2"/> -->
 		</layer>
 		<hotspot name="mangle_blanco_pre_info" style="flyoutimage" scale="0.40680000000001" depth="1000" rx="-0.30000000000000" ry="0" rz="2.94999999999996" ox="0.00000000000000" oy="0.00000000000000" tx="-651.50000000000091" ty="355.79999999999683" url="recursos/mangle_blanco_pre_info.png" onclick="set(hotspot[mangle_blanco_info].visible, true); set(hotspot[mangle_blanco_pre_info].visible, false);" />
 		<hotspot name="mangle_blanco_info" style="flyoutimage" scale="0.5" url="recursos/mangle_blanco_info.png" flying_state="out" visible="false" onclick="set(hotspot[mangle_blanco_info].visible, false); set(hotspot[mangle_blanco_pre_info].visible, true);" />
