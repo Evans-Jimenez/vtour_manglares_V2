@@ -89,8 +89,8 @@
 		<control bouncinglimits="true" />
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
 
-		<!-- <hotspot name="show_model" style="skin_animated_hotspot" ath="-23.08597589881083" atv="-7.44657373599020" scale="1.30000000000000" depth="1137.20000000000005" onloaded="do_crop_animation(64,64, 30);" onclick="toggle_3dmodel()" /> -->
-		<!-- <hotspot name="hide_model" ath="-9.52749630749702" atv="49.50119482149891" scale="1.30000000000000" visible="false" style="skin_animated_hotspot" onloaded="do_crop_animation(64,64, 30);" depth="1664.59999999999991" onclick="toggle_3dmodel()" /> -->
+		<!-- <hotspot name="show_model" style="skin_animated_hotspot" ath="-23.08597589881083" atv="-7.44657373599020" scale="1.30000000000000" depth="1137.20000000000005" onloaded="do_crop_animation(128,128, 40);" onclick="toggle_3dmodel()" /> -->
+		<!-- <hotspot name="hide_model" ath="-9.52749630749702" atv="49.50119482149891" scale="1.30000000000000" visible="false" style="skin_animated_hotspot" onloaded="do_crop_animation(128,128, 40);" depth="1664.59999999999991" onclick="toggle_3dmodel()" /> -->
 		<action name="ocultar">
 			tween(hotspot[Bienvenido].alpha, 0.0, 1.5);
 			tween(hotspot[Creditos].alpha, 0.0, 1.5);
@@ -106,11 +106,10 @@
 
 		<hotspot name="Bienvenido" type="image" url="recursos/introduccion.png" ath="0" atv="0" depth="1800" rx="0" ry="0" rz="0" ox="0.0" oy="0.0" tx="0" ty="0" tz="0" visible="false" distorted="true" onclick="ocultar();" />
 
-		<hotspot name="animated_hotspot" onloaded="do_crop_animation(64,64, 30);" style="skin_animated_hotspot" ath="114.6" atv="-1.2" scale="1.3" depth="1664.6" linkedscene="red_mangrove_beach_1" />
+		<hotspot name="animated_hotspot" onloaded="do_crop_animation(128,128, 40);" style="skin_animated_hotspot" ath="114.6" atv="-1.2" scale="0.6" depth="1664.6" linkedscene="red_mangrove_beach_1" />
 
 		<hotspot name="mangle_negro_pre_info" style="flyoutimage" scale="0.38330000000001" depth="1000" rx="-15.00000000000000" ry="2.40000000000000" rz="0" ox="0.00000000000000" oy="0.00000000000000" tx="-105.59999999999999" ty="372.85000000000304" url="recursos/mangle_negro_pre_info.png" onclick="set(hotspot[mangle_negro_info].visible, true); set(hotspot[mangle_negro_pre_info].visible, false);" />
 		<hotspot name="mangle_negro_info" style="flyoutimage" scale="0.5" url="recursos/mangle_negro_info.png" flying_state="out" visible="false" onclick="set(hotspot[mangle_negro_info].visible, false); set(hotspot[mangle_negro_pre_info].visible, true);" />
-
 
 		<preview url="panos/R0010050.tiles/preview.jpg" />
 
@@ -130,13 +129,14 @@
 	<scene name="red_mangrove_beach_1" title="Playa Mangle Rojo" onstart="" thumburl="panos/R0010051.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 
 		<control bouncinglimits="true" />
-		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="186.59999999999999" atv="-3.60000000000000" scale="1.30000000000000" depth="1020.20000000000005" onloaded="do_crop_animation(64,64, 30);" linkedscene="white_mangrove_2" />
+		<hotspot name="animated_hotspot" style="skin_animated_hotspot"  ath="186.59999999999999" atv="-3.60000000000000" scale="0.6" depth="1020.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="white_mangrove_2" />
 		<hotspot name="modelo_cangrejo" style="skin_crabstyle" url="recursos/crab_image.png" width="100" height="100" bgroundedge="50" ath="99.74408771117481" atv="6.28621641126942" scale="1.30000000000000" depth="1664.59999999999991" onloaded="circlepos(3,6);" html="Modelo 3D Cangrejo" onclick="toggle_3dmodel()"/>
 		<layer name="model_container" type="container" keep="false" bgcolor="0x000000" zorder="0" enabled="true" visible="false" bgcapture="true" width="90%" height="67.5%" align="center">
 			<layer name="threejs_container" iframeurl="https://siriuzz.github.io/vtour_3dmodels/viewer.html?model=cangrejo" type="iframe" align="center" width="100%" height="100%" visible="false" fillcolor="0xffffff" />
 			<layer name="close_3dmodel" onclick='toggle_3dmodel()' url="recursos/botoncerrar.png" align="leftbottom" x="10" y="5" scale="0.4" scale.mobile="0.2"/>
 		</layer>
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120.0" maxpixelzoom="2.0" fovmin="34.143934" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
+		<hotspot name="animated_hotspot_2" onloaded="do_crop_animation(128,128, 40);" style="skin_animated_hotspot" ath="-114.6" atv="-1.2" scale="0.6" depth="1664.6" linkedscene="black_mangrove" />
 
 		<preview url="panos/R0010051.tiles/preview.jpg" />
 
@@ -151,7 +151,7 @@
 	<control bouncinglimits="true" />
 	
 	<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
-	<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="186.59999999999999" atv="-3.60000000000000" scale="1.30000000000000" depth="1020.20000000000005" onloaded="do_crop_animation(64,64, 30);" linkedscene="white_mangrove_1" />
+	<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="186.59999999999999" atv="-3.60000000000000" scale="1.30000000000000" depth="1020.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="white_mangrove_1" />
 	
 	<preview url="panos/R0010052.tiles/preview.jpg" />
 	
@@ -166,7 +166,7 @@
 		<control bouncinglimits="true" />
 		
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
-		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="186.59999999999999" atv="-3.60000000000000" scale="1.30000000000000" depth="1020.20000000000005" onloaded="do_crop_animation(64,64, 30);" linkedscene="white_mangrove_1" />
+		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="186.59999999999999" atv="-3.60000000000000" scale="1.30000000000000" depth="1020.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="white_mangrove_1" />
 		
 		<preview url="panos/R0010053.tiles/preview.jpg" />
 		
@@ -181,7 +181,7 @@
 		<control bouncinglimits="true" />
 		
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
-		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="186.59999999999999" atv="-3.60000000000000" scale="1.30000000000000" depth="1020.20000000000005" onloaded="do_crop_animation(64,64, 30);" linkedscene="white_mangrove_1" />
+		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="186.59999999999999" atv="-3.60000000000000" scale="1.30000000000000" depth="1020.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="white_mangrove_1" />
 		
 		<preview url="panos/R0010054.tiles/preview.jpg" />
 		
@@ -196,7 +196,7 @@
 			<control bouncinglimits="true" />
 
 			<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
-			<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="186.59999999999999" atv="-3.60000000000000" scale="1.30000000000000" depth="1020.20000000000005" onloaded="do_crop_animation(64,64, 30);" linkedscene="white_mangrove_1" />
+			<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="186.59999999999999" atv="-3.60000000000000" scale="1.30000000000000" depth="1020.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="white_mangrove_1" />
 			
 			<preview url="panos/R0010055.tiles/preview.jpg" />
 			
@@ -211,7 +211,7 @@
 				<control bouncinglimits="true" />
 				
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
-		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="198.00000000000000" atv="-1.20000000000000" scale="1.30000000000000" depth="1665.20000000000005" onloaded="do_crop_animation(64,64, 30);" linkedscene="button_mangrove_1" />
+		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="198.00000000000000" atv="-1.20000000000000" scale="1.30000000000000" depth="1665.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="button_mangrove_1" />
 		
 		<preview url="panos/R0010056.tiles/preview.jpg" />
 		
@@ -226,7 +226,7 @@
 		<control bouncinglimits="true" />
 
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="140.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
-		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="198.00000000000000" atv="-1.20000000000000" scale="1.30000000000000" depth="1665.20000000000005" onloaded="do_crop_animation(64,64, 30);" linkedscene="button_mangrove_1" />
+		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="198.00000000000000" atv="-1.20000000000000" scale="0.6" depth="1665.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="button_mangrove_1" />
 		<hotspot name="modelo_fruto" style="skin_frutostyle" url="recursos/mangle_fruto.png" width="120" height="120" bgroundedge="60" ath="36.74408771117481" atv="6.28621641126942" scale="1.5" depth="1664.59999999999991" rx="0" ry="0" rz="0" ox="-41.84999999999977" oy="-32.05254037844466" onloaded="circlepos(3,6);" html="Modelo 3D Cangrejo" onclick="toggle_3dmodel()"/>
 		<!-- <hotspot name="modelo_fruto" style="infospot" width="120" height="120" bgroundedge="60" ath="99.74408771117481" atv="6.28621641126942" scale="1.30000000000000" depth="1664.59999999999991" onloaded="circlepos(3,6);" html="Modelo 3D Fruto Mangle Blanco" onclick="toggle_3dmodel()"/> -->
 
@@ -237,6 +237,7 @@
 		</layer>
 		<hotspot name="mangle_blanco_pre_info" style="flyoutimage" scale="0.40680000000001" depth="1000" rx="-0.30000000000000" ry="0" rz="2.94999999999996" ox="0.00000000000000" oy="0.00000000000000" tx="-651.50000000000091" ty="355.79999999999683" url="recursos/mangle_blanco_pre_info.png" onclick="set(hotspot[mangle_blanco_info].visible, true); set(hotspot[mangle_blanco_pre_info].visible, false);" />
 		<hotspot name="mangle_blanco_info" style="flyoutimage" scale="0.5" url="recursos/mangle_blanco_info.png" flying_state="out" visible="false" onclick="set(hotspot[mangle_blanco_info].visible, false); set(hotspot[mangle_blanco_pre_info].visible, true);" />
+		<hotspot name="animated_hotspot_2" style="skin_animated_hotspot" ath="-68.1939035" atv="0.2964044" scale="0.6" depth="1665.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="red_mangrove_beach_1" />
 
 		<preview url="panos/R0010057.tiles/preview.jpg" />
 
@@ -246,15 +247,15 @@
 
 	</scene>
 
-	<scene name="button_mangrove_1" title="R0010058" onstart="" thumburl="panos/R0010058.tiles/thumb.jpg" lat="18.21373333" lng="-70.53498056" alt="26.55" heading="0.0">
+	<scene name="button_mangrove_1" title="Mangle Boton" onstart="" thumburl="panos/R0010058.tiles/thumb.jpg" lat="18.21373333" lng="-70.53498056" alt="26.55" heading="0.0">
 
 		<control bouncinglimits="true" />
 
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="140.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
-		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="227.40000000000001" atv="0.00000000000000" scale="1.30000000000000" depth="1665.20000000000005" onloaded="do_crop_animation(64,64, 30);" linkedscene="red_mangrove_3" />
+		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="227.40000000000001" atv="0.00000000000000" scale="0.6" depth="1665.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="red_mangrove_3" />
 		<hotspot name="mangle_boton_pre_info" style="flyoutimage" scale="0.48250000000002" depth="1000" rx="0" ry="25.80000000000000" rz="0.60000000000001" ox="0.00000000000000" oy="0.00000000000000" tx="1193.65000000000509" ty="328.64999999999986" url="recursos/mangle_boton_pre_info.png" onclick="set(hotspot[mangle_boton_info].visible, true); set(hotspot[mangle_boton_pre_info].visible, false);" />
 		<hotspot name="mangle_boton_info" style="flyoutimage" scale="0.5" url="recursos/mangle_boton_info.png" flying_state="out" visible="false" onclick="set(hotspot[mangle_boton_info].visible, false); set(hotspot[mangle_boton_pre_info].visible, true);" />
-		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="161.4260967" atv="3.9054388" scale="1.30000000000000" depth="1665.20000000000005" onloaded="do_crop_animation(64,64, 30);" linkedscene="white_mangrove_2" />
+		<hotspot name="animated_hotspot_2" style="skin_animated_hotspot" ath="161.4260967" atv="3.9054388" scale="0.6" depth="1665.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="white_mangrove_2" />
 
 		<preview url="panos/R0010058.tiles/preview.jpg" />
 
@@ -269,7 +270,7 @@
 		<control bouncinglimits="true" />
 
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="140.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
-		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="227.40000000000001" atv="0.00000000000000" scale="1.30000000000000" depth="1665.20000000000005" onloaded="do_crop_animation(64,64, 30);" linkedscene="red_mangrove_1" />
+		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="227.40000000000001" atv="0.00000000000000" scale="1.30000000000000" depth="1665.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="red_mangrove_1" />
 
 		<preview url="panos/R0010059.tiles/preview.jpg" />
 
@@ -314,8 +315,8 @@
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
 		<hotspot name="mangle_rojo_pre_info" style="flyoutimage" scale="0.42920000000000" depth="1000" rx="0" ry="-7.80000000000000" rz="0" ox="0.00000000000000" oy="0.00000000000000" tx="-814.79999999999984" ty="147.59999999999999" url="recursos/mangle_rojo_pre_info.png" onclick="set(hotspot[mangle_rojo_info].visible, true); set(hotspot[mangle_rojo_pre_info].visible, false);" />
 		<hotspot name="mangle_rojo_info" style="flyoutimage" scale="0.5" url="recursos/mangle_rojo_info.png" flying_state="out" visible="false" onclick="set(hotspot[mangle_rojo_info].visible, false); set(hotspot[mangle_rojo_pre_info].visible, true);" />
-		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="227.40000000000001" atv="0.00000000000000" scale="1.30000000000000" depth="1665.20000000000005" onloaded="do_crop_animation(64,64, 30);" linkedscene="close_up_2" />
-		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="127.1944451" atv="-1.7951416" scale="1.30000000000000" depth="1665.20000000000005" onloaded="do_crop_animation(64,64, 30);" linkedscene="button_mangrove_1" />
+		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="227.40000000000001" atv="0.00000000000000" scale="0.6" depth="1665.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="close_up_2" />
+		<hotspot name="animated_hotspo_2" style="skin_animated_hotspot" ath="127.1944451" atv="-1.7951416" scale="0.6" depth="1665.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="button_mangrove_1" />
 
 		<preview url="panos/R0010062.tiles/preview.jpg" />
 
@@ -378,7 +379,7 @@
 		<image prealign="5.627404|0.074481|1.227278">
 			<cube url="panos/R0010066.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,768,1664" />
 		</image>
-		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="227.40000000000001" atv="0.00000000000000" scale="1.30000000000000" depth="1665.20000000000005" onloaded="do_crop_animation(64,64, 30);" linkedscene="finale" />
+		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="227.40000000000001" atv="0.00000000000000" scale="0.6" depth="1665.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="finale" />
 
 	</scene>
 	<scene name="finale" title="Agradecimientos" onstart="" thumburl="recursos/agradecimientos.png" lat="18.21359167" lng="-70.53562222" alt="27.46" heading="0.0">
@@ -389,9 +390,11 @@
 
 		<!-- <preview url="panos/R0010066.tiles/preview.jpg" /> -->
 
-		<image hfov="120" vfov="35" voffset="0">
-			<flat url="recursos/agradecimientos.png" />
+		<image prealign="5.997163|0.009676|-0.184717">
+			<cube url="panos/R0010051.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,768,1664" />
 		</image>
+
+		<hotspot url="recursos/agradecimientos.png" depth="2000" style="flyoutimage" scale="0.5"/>
 
 	</scene>
 
