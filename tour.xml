@@ -15,11 +15,6 @@
 	<layer name="botoncreditos" url="recursos/botoncreditos.png" keep="true" enabled="true" align="leftbottom" x="10" y="5" scale="0.4" scale.mobile="0.2" onclick="set(layer[creditos].visible,true);"/>
 	<action name="flyout_hotspot"> for(set(i,0), i LT hotspot.count, inc(i), copy(hs, hotspot[get(i)]); if(hs.name != name AND hs.style == 'flyoutimage' AND (hs.flying_state == 'out' OR hs.flying_state == 'flyingout'), callwith(hs, flyout_hotspot() ); ); ); if(flying_state == 'flyingout', set(flying_state, 'flyingin'); , if(flying_state == 'flyingin', set(flying_state, 'flyingout'); ); ); if(flying_state == 'in', calc(backup_state, '0.0|' + rx + '|' + ry + '|' + rz + '|' + scale); copy(backup_zorder, zorder); set(flying_state, 'flyingout'); ); if(flying_state == 'out', set(flying_state, 'flyingin'); ); if(flying_state == 'flyingout', set(zorder, 99); tween(alpha, 1,2); tween(flying|rx|ry|rz|scale, '0.0|0.0|0.0|0.0|1.0',2, default, set(flying_state,'out'); set(capture,true); ); ); if(flying_state == 'flyingout' AND webvr.isenabled, set(zorder, 99); tween(alpha, 1 ,2); tween(flying|rx|ry|rz|scale, '1.0|0.0|0.0|0.0|0.3',2, default, set(flying_state,'in'); set(capture,true); ); delayedcall(6.0, set(visible, false); ); ); if(flying_state == 'flyingin', sub(zorder,1); tween(alpha, 0 ,2); set(capture,false); tween(flying|rx|ry|rz|scale, get(backup_state), 1, default, set(flying_state,'in'); copy(zorder,backup_zorder); ); ); if(flying_state == 'flyingin' AND webvr.isenabled, sub(zorder,1); tween(alpha, 0 ,2); set(capture,false); tween(flying|rx|ry|rz|scale, get(backup_state), 1, default, set(flying_state,'in'); copy(zorder,backup_zorder); ); ); </action>
 	<plugin name="WebVR" devices="html5" keep="true" url="plugins/webvr.js"/>
-	<!-- <action name="hide_3dmodels">
-		set(hotspot[modelo_cangrejo].visible, false);
-		set(hotspot[modelo_fruto].visible, false);
-
-	</action> -->
 	<action name="on_intro_click">
 		tween(layer[intro].alpha, 0);
 		set(layer[intro].enabled, false);
@@ -61,14 +56,6 @@
 			);			
 	</action>
 
-	<!-- <action name="checkVRMode">
-		if(isvrbrowser === true,
-			hide_vr_button();
-		,
-			show_vr_button();
-		);
-	</action> -->
-
 	<action name="show_vr_button">
 		set(hotspot[modelo_cangrejo].visible, true);
 		set(hotspot[modelo_fruto].visible, true);
@@ -81,17 +68,10 @@
 
 	<scene name="black_mangrove" title="Mangle Negro" thumburl="panos/R0010050.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 
-
-		<!-- <layer name="intro" type="container" keep="true" width="100%" height="100%" bgcolor="0x000000" bgalpha="0.8" zorder="9999" enabled="true" bgcapture="true" vr="true">
-			<layer name="threejs_container" keep="true" iframeurl="https://siriuzz.github.io/vtour_3dmodels/viewer.html?model=cell" zorder="10" enabled="true" type="iframe" vr="true" align="center" width="60%" height="30%" visible="false" fillcolor="0xffffff" />
-		</layer> -->
-
 		<control bouncinglimits="true" />
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
 
-		<!-- <hotspot name="show_model" style="skin_animated_hotspot" ath="-23.08597589881083" atv="-7.44657373599020" scale="1.30000000000000" depth="1137.20000000000005" onloaded="do_crop_animation(128,128, 40);" onclick="toggle_3dmodel()" /> -->
-		<!-- <hotspot name="hide_model" ath="-9.52749630749702" atv="49.50119482149891" scale="1.30000000000000" visible="false" style="skin_animated_hotspot" onloaded="do_crop_animation(128,128, 40);" depth="1664.59999999999991" onclick="toggle_3dmodel()" /> -->
-		<action name="ocultar">
+	<action name="ocultar">
 			tween(hotspot[Bienvenido].alpha, 0.0, 1.5);
 			tween(hotspot[Creditos].alpha, 0.0, 1.5);
 			set(hotspot[Creditos].enabled, false);
@@ -116,27 +96,23 @@
 		<image prealign="4.027685|-0.039407|0.942229">
 			<cube url="panos/R0010050.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,768,1664" />
 		</image>
-		<!-- <layer name="fullscreen_click" type="container" width="100%" height="100%" align="center" onclick="check_click();" /> -->
-		<!-- Layer del 3D Model -->
-		<!-- <layer name="threejs_container" vr="true" iframeurl="https://siriuzz.github.io/vtour_3dmodels/viewer.html?model=cell" type="iframe" align="center" width="80%" height="80%" visible="false" fillcolor="0xAAAAAA" /> -->
-
-		<!-- Evento para ocultar el layer si se hace clic fuera -->
-
-		<!-- Detecta clics fuera del layer y ejecuta la acción -->
 
 	</scene>
 
 	<scene name="red_mangrove_beach_1" title="Playa Mangle Rojo" onstart="" thumburl="panos/R0010051.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 
 		<control bouncinglimits="true" />
-		<hotspot name="animated_hotspot" style="skin_animated_hotspot"  ath="186.59999999999999" atv="-3.60000000000000" scale="0.6" depth="1020.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="white_mangrove_2" />
+		
+		<hotspot name="animated_hotspot" style="skin_animated_hotspot"  ath="186.59999999999999" atv="-3.60000000000000" depth="1020.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="white_mangrove_2" />
 		<hotspot name="modelo_cangrejo" style="skin_crabstyle" url="recursos/crab_image.png" width="100" height="100" bgroundedge="50" ath="99.74408771117481" atv="6.28621641126942" scale="1.30000000000000" depth="1664.59999999999991" onloaded="circlepos(3,6);" html="Modelo 3D Cangrejo" onclick="toggle_3dmodel()"/>
+		<hotspot name="animated_hotspot_2" onloaded="do_crop_animation(128,128, 40);" style="skin_animated_hotspot" ath="-114.6" atv="-1.2" depth="1664.6" linkedscene="black_mangrove" />
+		
 		<layer name="model_container" type="container" keep="false" bgcolor="0x000000" zorder="0" enabled="true" visible="false" bgcapture="true" width="90%" height="67.5%" align="center">
 			<layer name="threejs_container" iframeurl="https://siriuzz.github.io/vtour_3dmodels/viewer.html?model=cangrejo" type="iframe" align="center" width="100%" height="100%" visible="false" fillcolor="0xffffff" />
 			<layer name="close_3dmodel" onclick='toggle_3dmodel()' url="recursos/botoncerrar.png" align="leftbottom" x="10" y="5" scale="0.4" scale.mobile="0.2"/>
 		</layer>
+	
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120.0" maxpixelzoom="2.0" fovmin="34.143934" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
-		<hotspot name="animated_hotspot_2" onloaded="do_crop_animation(128,128, 40);" style="skin_animated_hotspot" ath="-114.6" atv="-1.2" scale="0.6" depth="1664.6" linkedscene="black_mangrove" />
 
 		<preview url="panos/R0010051.tiles/preview.jpg" />
 
@@ -146,98 +122,22 @@
 
 	</scene>
 
-	<!-- <scene name="red_mangrove_beach_2" title="Playa Mangle Rojo" onstart="" thumburl="panos/R0010052.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
-		
-	<control bouncinglimits="true" />
-	
-	<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
-	<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="186.59999999999999" atv="-3.60000000000000" scale="1.30000000000000" depth="1020.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="white_mangrove_1" />
-	
-	<preview url="panos/R0010052.tiles/preview.jpg" />
-	
-	<image prealign="5.658853|0.05559|0.368961">
-		<cube url="panos/R0010052.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,768,1664" />
-		</image>
-		
-		</scene>
-		
-		<scene name="red_mangrove_beach_3" title="Playa Mangle Rojo" onstart="" thumburl="panos/R0010053.tiles/thumb.jpg" lat="18.21400556" lng="-70.53576944" alt="26.96" heading="0.0">
-			
-		<control bouncinglimits="true" />
-		
-		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
-		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="186.59999999999999" atv="-3.60000000000000" scale="1.30000000000000" depth="1020.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="white_mangrove_1" />
-		
-		<preview url="panos/R0010053.tiles/preview.jpg" />
-		
-		<image prealign="4.895702|-0.008781|0.205413">
-			<cube url="panos/R0010053.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,768,1664" />
-			</image>
-			
-			</scene>
-			
-			<scene name="red_mangrove_beach_4" title="Playa Mangle Rojo" onstart="" thumburl="panos/R0010054.tiles/thumb.jpg" lat="18.21400556" lng="-70.53576944" alt="27.15" heading="0.0">
-				
-		<control bouncinglimits="true" />
-		
-		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
-		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="186.59999999999999" atv="-3.60000000000000" scale="1.30000000000000" depth="1020.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="white_mangrove_1" />
-		
-		<preview url="panos/R0010054.tiles/preview.jpg" />
-		
-		<image prealign="5.543677|-0.079766|0.364163">
-			<cube url="panos/R0010054.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,768,1664" />
-			</image>
-			
-			</scene>
-
-			<scene name="red_mangrove_beach_5" title="Playa Mangle Rojo" onstart="" thumburl="panos/R0010055.tiles/thumb.jpg" lat="18.21396389" lng="-70.53577222" alt="28.03" heading="0.0">
-				
-			<control bouncinglimits="true" />
-
-			<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
-			<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="186.59999999999999" atv="-3.60000000000000" scale="1.30000000000000" depth="1020.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="white_mangrove_1" />
-			
-			<preview url="panos/R0010055.tiles/preview.jpg" />
-			
-			<image prealign="5.803242|-0.054025|1.065949">
-				<cube url="panos/R0010055.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,768,1664" />
-				</image>
-				
-				</scene> -->
-
-	<!-- <scene name="white_mangrove_1" title="Mangle Blanco" onstart="" thumburl="panos/R0010056.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
-					
-				<control bouncinglimits="true" />
-				
-		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
-		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="198.00000000000000" atv="-1.20000000000000" scale="1.30000000000000" depth="1665.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="button_mangrove_1" />
-		
-		<preview url="panos/R0010056.tiles/preview.jpg" />
-		
-		<image prealign="4.371804|0.07097|-1.859177">
-			<cube url="panos/R0010056.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,768,1664" />
-		</image>
-
-	</scene> -->
-
 	<scene name="white_mangrove_2" title="Mangle Blanco" onstart="" thumburl="panos/R0010057.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 
 		<control bouncinglimits="true" />
 
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="140.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
+		
 		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="198.00000000000000" atv="-1.20000000000000" scale="0.6" depth="1665.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="button_mangrove_1" />
 		<hotspot name="modelo_fruto" style="skin_frutostyle" url="recursos/mangle_fruto.png" width="120" height="120" bgroundedge="60" ath="36.74408771117481" atv="6.28621641126942" scale="1.5" depth="1664.59999999999991" rx="0" ry="0" rz="0" ox="-41.84999999999977" oy="-32.05254037844466" onloaded="circlepos(3,6);" html="Modelo 3D Cangrejo" onclick="toggle_3dmodel()"/>
-		<!-- <hotspot name="modelo_fruto" style="infospot" width="120" height="120" bgroundedge="60" ath="99.74408771117481" atv="6.28621641126942" scale="1.30000000000000" depth="1664.59999999999991" onloaded="circlepos(3,6);" html="Modelo 3D Fruto Mangle Blanco" onclick="toggle_3dmodel()"/> -->
+		<hotspot name="mangle_blanco_pre_info" style="flyoutimage" scale="0.40680000000001" depth="1000" rx="-0.30000000000000" ry="0" rz="2.94999999999996" ox="0.00000000000000" oy="0.00000000000000" tx="-651.50000000000091" ty="355.79999999999683" url="recursos/mangle_blanco_pre_info.png" onclick="set(hotspot[mangle_blanco_info].visible, true); set(hotspot[mangle_blanco_pre_info].visible, false);" />
+		<hotspot name="mangle_blanco_info" style="flyoutimage" scale="0.5" url="recursos/mangle_blanco_info.png" flying_state="out" visible="false" onclick="set(hotspot[mangle_blanco_info].visible, false); set(hotspot[mangle_blanco_pre_info].visible, true);" />
+		<hotspot name="animated_hotspot_2" style="skin_animated_hotspot" ath="-68.1939035" atv="0.2964044" scale="0.6" depth="1665.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="red_mangrove_beach_1" />
 
 		<layer name="model_container" type="container" keep="false" bgcolor="0x000000" zorder="0" enabled="true" visible="false" bgcapture="true" vr="true" width="90%" height="67.5%" align="center">
 			<layer name="threejs_container" iframeurl="https://siriuzz.github.io/vtour_3dmodels/viewer.html?model=manglar_fruto" type="iframe" vr="true" align="center" width="100%" height="100%" visible="false" fillcolor="0xffffff" />
 			<layer name="close_3dmodel" onclick='toggle_3dmodel()' url="recursos/botoncerrar.png" keep="true" enabled="true" align="leftbottom" x="10" y="5" scale="0.4" scale.mobile="0.2"/>
-			<!-- <layer name="model_title" type="text" html="fruto" keep="true" enabled="true" align="leftbottom" x="927" y="583" scale="2" scale.mobile="0.2"/> -->
 		</layer>
-		<hotspot name="mangle_blanco_pre_info" style="flyoutimage" scale="0.40680000000001" depth="1000" rx="-0.30000000000000" ry="0" rz="2.94999999999996" ox="0.00000000000000" oy="0.00000000000000" tx="-651.50000000000091" ty="355.79999999999683" url="recursos/mangle_blanco_pre_info.png" onclick="set(hotspot[mangle_blanco_info].visible, true); set(hotspot[mangle_blanco_pre_info].visible, false);" />
-		<hotspot name="mangle_blanco_info" style="flyoutimage" scale="0.5" url="recursos/mangle_blanco_info.png" flying_state="out" visible="false" onclick="set(hotspot[mangle_blanco_info].visible, false); set(hotspot[mangle_blanco_pre_info].visible, true);" />
-		<hotspot name="animated_hotspot_2" style="skin_animated_hotspot" ath="-68.1939035" atv="0.2964044" scale="0.6" depth="1665.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="red_mangrove_beach_1" />
 
 		<preview url="panos/R0010057.tiles/preview.jpg" />
 
@@ -252,6 +152,7 @@
 		<control bouncinglimits="true" />
 
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="140.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
+		
 		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="227.40000000000001" atv="0.00000000000000" scale="0.6" depth="1665.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="red_mangrove_3" />
 		<hotspot name="mangle_boton_pre_info" style="flyoutimage" scale="0.48250000000002" depth="1000" rx="0" ry="25.80000000000000" rz="0.60000000000001" ox="0.00000000000000" oy="0.00000000000000" tx="1193.65000000000509" ty="328.64999999999986" url="recursos/mangle_boton_pre_info.png" onclick="set(hotspot[mangle_boton_info].visible, true); set(hotspot[mangle_boton_pre_info].visible, false);" />
 		<hotspot name="mangle_boton_info" style="flyoutimage" scale="0.5" url="recursos/mangle_boton_info.png" flying_state="out" visible="false" onclick="set(hotspot[mangle_boton_info].visible, false); set(hotspot[mangle_boton_pre_info].visible, true);" />
@@ -265,54 +166,12 @@
 
 	</scene>
 
-	<!-- <scene name="button_mangrove_2" title="R0010059" onstart="" thumburl="panos/R0010059.tiles/thumb.jpg" lat="18.21374722" lng="-70.53520000" alt="27.90" heading="0.0">
-
-		<control bouncinglimits="true" />
-
-		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="140.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
-		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="227.40000000000001" atv="0.00000000000000" scale="1.30000000000000" depth="1665.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="red_mangrove_1" />
-
-		<preview url="panos/R0010059.tiles/preview.jpg" />
-
-		<image prealign="5.436792|0.049939|0.575905">
-			<cube url="panos/R0010059.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,768,1664" />
-		</image>
-
-	</scene> -->
-
-	<!-- <scene name="red_mangrove_1" title="R0010060" onstart="" thumburl="panos/R0010060.tiles/thumb.jpg" lat="18.21405833" lng="-70.53452778" alt="27.18" heading="0.0">
-
-		<control bouncinglimits="true" />
-
-		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
-
-		<preview url="panos/R0010060.tiles/preview.jpg" />
-
-		<image prealign="4.146622|0.137385|0.450316">
-			<cube url="panos/R0010060.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,768,1664" />
-		</image>
-
-	</scene>
-
-	<scene name="red_mangrove_2" title="R0010061" onstart="" thumburl="panos/R0010061.tiles/thumb.jpg" lat="18.21403333" lng="-70.53451944" alt="31.77" heading="0.0">
-
-		<control bouncinglimits="true" />
-
-		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
-
-		<preview url="panos/R0010061.tiles/preview.jpg" />
-
-		<image prealign="4.766277|0.078298|0.604443">
-			<cube url="panos/R0010061.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,768,1664" />
-		</image>
-
-	</scene> -->
-
 	<scene name="red_mangrove_3" title="R0010062" onstart="" thumburl="panos/R0010062.tiles/thumb.jpg" lat="18.21395833" lng="-70.53458056" alt="32.03" heading="0.0">
 
 		<control bouncinglimits="true" />
 
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
+		
 		<hotspot name="mangle_rojo_pre_info" style="flyoutimage" scale="0.42920000000000" depth="1000" rx="0" ry="-7.80000000000000" rz="0" ox="0.00000000000000" oy="0.00000000000000" tx="-814.79999999999984" ty="147.59999999999999" url="recursos/mangle_rojo_pre_info.png" onclick="set(hotspot[mangle_rojo_info].visible, true); set(hotspot[mangle_rojo_pre_info].visible, false);" />
 		<hotspot name="mangle_rojo_info" style="flyoutimage" scale="0.5" url="recursos/mangle_rojo_info.png" flying_state="out" visible="false" onclick="set(hotspot[mangle_rojo_info].visible, false); set(hotspot[mangle_rojo_pre_info].visible, true);" />
 		<hotspot name="animated_hotspot" style="skin_animated_hotspot" ath="227.40000000000001" atv="0.00000000000000" scale="0.6" depth="1665.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="close_up_2" />
@@ -325,48 +184,6 @@
 		</image>
 
 	</scene>
-
-	<!-- <scene name="scene_R0010063" title="R0010063" onstart="" thumburl="panos/R0010063.tiles/thumb.jpg" lat="18.21374167" lng="-70.53410000" alt="25.97" heading="0.0">
-		
-		<control bouncinglimits="calc:image.cube ? true : false" />
-
-		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
-
-		<preview url="panos/R0010063.tiles/preview.jpg" />
-
-		<image prealign="0|0.0|0">
-			<cube url="panos/R0010063.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,768,1664" />
-		</image>
-
-	</scene>
-
-	<scene name="scene_R0010064" title="R0010064" onstart="" thumburl="panos/R0010064.tiles/thumb.jpg" lat="18.21366389" lng="-70.53437778" alt="26.99" heading="0.0">
-		
-		<control bouncinglimits="calc:image.cube ? true : false" />
-
-		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
-
-		<preview url="panos/R0010064.tiles/preview.jpg" />
-
-		<image prealign="0|0.0|0">
-			<cube url="panos/R0010064.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,768,1664" />
-		</image>
-
-	</scene> -->
-
-	<!-- <scene name="close_up_1" title="R0010065" onstart="" thumburl="panos/R0010065.tiles/thumb.jpg" lat="18.21364722" lng="-70.53562500" alt="36.96" heading="0.0">
-
-		<control bouncinglimits="true" />
-
-		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
-
-		<preview url="panos/R0010065.tiles/preview.jpg" />
-
-		<image prealign="4.609897|-0.116377|1.342231">
-			<cube url="panos/R0010065.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,768,1664" />
-		</image>
-
-	</scene> -->
 
 	<scene name="close_up_2" title="R0010066" onstart="" thumburl="panos/R0010066.tiles/thumb.jpg" lat="18.21359167" lng="-70.53562222" alt="27.46" heading="0.0">
 
@@ -388,8 +205,6 @@
 
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="100.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="lookto" pixelzoom="0.8" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
 
-		<!-- <preview url="panos/R0010066.tiles/preview.jpg" /> -->
-
 		<image prealign="5.997163|0.009676|-0.184717">
 			<cube url="panos/R0010051.tiles/%s/l%l/%v/l%l_%s_%v_%h.jpg" multires="512,768,1664" />
 		</image>
@@ -398,33 +213,4 @@
 
 		<hotspot name="Volver Inicio" style="skin_animated_hotspot" ath="-1.5312891" atv="22.1069124" tooltip="$(hs)" scale="0.6" depth="1665.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="black_mangrove"/>
 	</scene>
-
-	<!-- <scene name="partial_pano_1" title="Raíces" onstart="" thumburl="panos/pano_1.jpg" lat="18.21359167" lng="-70.53562222" alt="27.46" heading="0.0">
-
-		<control bouncinglimits="false" />
-
-		<view hlookat="0.0" vlookat="0.0" fovtype="VFOV" fov="140.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
-
-		 <preview url="panos/R0010066.tiles/preview.jpg" />
-
-		<image hfov="156.00" vfov="47.058530" voffset="8.97">
-			<sphere url="panos/pano_1.jpg" />
-		</image>
-
-	</scene> -->
-
-	<!-- <scene name="partial_pano_2" title="Raíces" onstart="" thumburl="panos/pano_2.jpg" lat="18.21359167" lng="-70.53562222" alt="27.46" heading="0.0">
-
-		<control bouncinglimits="false" />
-
-		<view hlookat="0.0" vlookat="0.0" fovtype="VFOV" fov="140.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
-
-		<preview url="panos/R0010066.tiles/preview.jpg" />
-
-		<image hfov="156.00" vfov="47.058530" voffset="8.97">
-			<sphere url="panos/pano_2.jpg" />
-		</image>
-
-	</scene> -->
-
 </krpano>
