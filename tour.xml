@@ -396,6 +396,7 @@
 
 		<hotspot url="recursos/agradecimientos.png" depth="2000" style="flyoutimage" scale="0.5"/>
 
+		<hotspot name="Volver Inicio" style="skin_animated_hotspot" ath="-1.5312891" atv="22.1069124" tooltip="$(hs)" scale="0.6" depth="1665.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="black_mangrove"/>
 	</scene>
 
 	<!-- <scene name="partial_pano_1" title="Raíces" onstart="" thumburl="panos/pano_1.jpg" lat="18.21359167" lng="-70.53562222" alt="27.46" heading="0.0">
