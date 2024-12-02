@@ -103,7 +103,7 @@
 
 	</scene>
 
-	<scene name="red_mangrove_beach_1" title="Playa Mangle Rojo" onstart="" onloaded="toggle_hotspot_visibility()" thumburl="panos/R0010051.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+	<scene name="red_mangrove_beach_1" title="Playa Mangle Rojo" onstart="toggle_hotspot_visibility()" thumburl="panos/R0010051.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 
 		<control bouncinglimits="true" />
 		
