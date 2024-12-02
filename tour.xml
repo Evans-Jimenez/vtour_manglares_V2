@@ -25,7 +25,7 @@
 	</action>
 	<action name="toggle_hotspot_visibility">
 
-		if(devices.pc, set(hotspot[modelo_cangrejo].visible, false));
+		if(devices.vr, set(hotspot[modelo_cangrejo].visible, false));
 		
 	</action>
 	<action name="on_intro_loaded">
