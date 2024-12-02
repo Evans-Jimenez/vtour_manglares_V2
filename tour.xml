@@ -1,4 +1,4 @@
-﻿<krpano version="1.21" title="Virtual Tour">
+﻿<krpano version="1.21" title="Virtual Tour" onloaded="toggle_hotspot_visibility();">
 
 	<include url="skin/vtourskin.xml" />
 	<include url="plugins/popups.xml" />
@@ -60,16 +60,6 @@
 			);			
 	</action>
 
-	<action name="show_vr_button">
-		set(hotspot[modelo_cangrejo].visible, true);
-		set(hotspot[modelo_fruto].visible, true);
-	</action>
-
-	<action name="hide_vr_button">
-		set(hotspot[modelo_cangrejo].visible, false);
-		set(hotspot[modelo_fruto].visible, false);
-	</action>
-
 	<scene name="black_mangrove" title="Mangle Negro" thumburl="panos/R0010050.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 
 		<control bouncinglimits="true" />
@@ -108,7 +98,7 @@
 		<control bouncinglimits="true" />
 		
 		<hotspot name="animated_hotspot" style="skin_animated_hotspot"  ath="186.59999999999999" atv="-3.60000000000000" depth="1020.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="white_mangrove_2" />
-		<hotspot name="modelo_cangrejo" style="skin_crabstyle" url="recursos/crab_image.png" width="100" height="100" bgroundedge="50" ath="99.74408771117481" atv="6.28621641126942" scale="1.30000000000000" depth="1664.59999999999991" onloaded="circlepos(3,6);toggle_hotspot_visibility()" html="Modelo 3D Cangrejo" onclick="toggle_3dmodel()"/>
+		<hotspot name="modelo_cangrejo" style="skin_crabstyle" url="recursos/crab_image.png" width="100" height="100" bgroundedge="50" ath="99.74408771117481" atv="6.28621641126942" scale="1.30000000000000" depth="1664.59999999999991" onloaded="circlepos(3,6);" html="Modelo 3D Cangrejo" onclick="toggle_3dmodel()"/>
 		<hotspot name="animated_hotspot_2" onloaded="do_crop_animation(128,128, 40);" style="skin_animated_hotspot" ath="-114.6" atv="-1.2" depth="1664.6" linkedscene="black_mangrove" />
 		
 		<layer name="model_container" type="container" keep="false" bgcolor="0x000000" zorder="0" enabled="true" visible="false" bgcapture="true" width="90%" height="67.5%" align="center">
