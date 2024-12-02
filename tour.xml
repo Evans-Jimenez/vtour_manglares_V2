@@ -103,12 +103,12 @@
 
 	</scene>
 
-	<scene name="red_mangrove_beach_1" title="Playa Mangle Rojo" onstart="toggle_hotspot_visibility()" thumburl="panos/R0010051.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+	<scene name="red_mangrove_beach_1" title="Playa Mangle Rojo" onstart="" thumburl="panos/R0010051.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 
 		<control bouncinglimits="true" />
 		
 		<hotspot name="animated_hotspot" style="skin_animated_hotspot"  ath="186.59999999999999" atv="-3.60000000000000" depth="1020.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="white_mangrove_2" />
-		<hotspot name="modelo_cangrejo" style="skin_crabstyle" url="recursos/crab_image.png" width="100" height="100" bgroundedge="50" ath="99.74408771117481" atv="6.28621641126942" scale="1.30000000000000" depth="1664.59999999999991" onloaded="circlepos(3,6);" html="Modelo 3D Cangrejo" onclick="toggle_3dmodel()"/>
+		<hotspot name="modelo_cangrejo" style="skin_crabstyle" url="recursos/crab_image.png" width="100" height="100" bgroundedge="50" ath="99.74408771117481" atv="6.28621641126942" scale="1.30000000000000" depth="1664.59999999999991" onloaded="circlepos(3,6);toggle_hotspot_visibility()" html="Modelo 3D Cangrejo" onclick="toggle_3dmodel()"/>
 		<hotspot name="animated_hotspot_2" onloaded="do_crop_animation(128,128, 40);" style="skin_animated_hotspot" ath="-114.6" atv="-1.2" depth="1664.6" linkedscene="black_mangrove" />
 		
 		<layer name="model_container" type="container" keep="false" bgcolor="0x000000" zorder="0" enabled="true" visible="false" bgcapture="true" width="90%" height="67.5%" align="center">
