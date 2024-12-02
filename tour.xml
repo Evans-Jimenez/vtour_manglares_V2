@@ -23,7 +23,11 @@
 		set(hotspot[Creditos].alpha, 1);
 		set(hotspot[Bienvenido].alpha, 1);
 	</action>
+	<action name="toggle_hotspot_visibility">
 
+		if(devices.vr, set(hotspot[modelo_cangrejo].visible, false));
+		
+		</action>
 	<action name="on_intro_loaded">
 		set(hotspot[show_model].visible, false);
 		set(hotspot[mangle_negro_pre_info].visible, false);
@@ -99,7 +103,7 @@
 
 	</scene>
 
-	<scene name="red_mangrove_beach_1" title="Playa Mangle Rojo" onstart="" thumburl="panos/R0010051.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
+	<scene name="red_mangrove_beach_1" title="Playa Mangle Rojo" onstart="" onloaded="toggle_hotspot_visibility()" thumburl="panos/R0010051.tiles/thumb.jpg" lat="" lng="" alt="" heading="">
 
 		<control bouncinglimits="true" />
 		
