@@ -80,7 +80,7 @@
 
 		<hotspot name="Bienvenido" type="image" url="recursos/introduccion.png" ath="0" atv="0" depth="1800" rx="0" ry="0" rz="0" ox="0.0" oy="0.0" tx="0" ty="0" tz="0" visible="false" distorted="true" onclick="ocultar();" />
 
-		<hotspot name="animated_hotspot" onloaded="do_crop_animation(128,128, 40);" style="skin_animated_hotspot" ath="114.6" atv="-1.2" scale="0.6" depth="1664.6" linkedscene="red_mangrove_beach_1" />
+		<hotspot name="animated_hotspot" onloaded="do_crop_animation(128,128, 40);" style="skin_animated_hotspot_2" ath="114.6" atv="-1.2" scale="0.6" depth="1664.6" linkedscene="red_mangrove_beach_1" />
 
 		<hotspot name="mangle_negro_pre_info" style="flyoutimage" scale="0.38330000000001" depth="1000" rx="-15.00000000000000" ry="2.40000000000000" rz="0" ox="0.00000000000000" oy="0.00000000000000" tx="-105.59999999999999" ty="372.85000000000304" url="recursos/mangle_negro_pre_info.png" onclick="set(hotspot[mangle_negro_info].visible, true); set(hotspot[mangle_negro_pre_info].visible, false);" />
 		<hotspot name="mangle_negro_info" style="flyoutimage" scale="0.5" url="recursos/mangle_negro_info.png" flying_state="out" visible="false" onclick="set(hotspot[mangle_negro_info].visible, false); set(hotspot[mangle_negro_pre_info].visible, true);" />
