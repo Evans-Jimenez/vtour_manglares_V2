@@ -123,15 +123,15 @@
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="140.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
 		
 		<hotspot name="animated_hotspot" style="skin_animated_hotspot_2" ath="198.00000000000000" atv="-1.20000000000000" scale="0.6" depth="1665.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="button_mangrove_1" />
-		<hotspot name="modelo_fruto" style="skin_frutostyle" url="recursos/mangle_fruto.png" width="120" height="120" bgroundedge="60" ath="36.74408771117481" atv="6.28621641126942" scale="1.5" depth="1664.59999999999991" rx="0" ry="0" rz="0" ox="-41.84999999999977" oy="-32.05254037844466" onloaded="circlepos(3,6);" html="Modelo 3D Cangrejo" onclick="toggle_3dmodel()"/>
+		<!-- <hotspot name="modelo_fruto" style="skin_frutostyle" url="recursos/mangle_fruto.png" width="120" height="120" bgroundedge="60" ath="36.74408771117481" atv="6.28621641126942" scale="1.5" depth="1664.59999999999991" rx="0" ry="0" rz="0" ox="-41.84999999999977" oy="-32.05254037844466" onloaded="circlepos(3,6);" html="Modelo 3D Cangrejo" onclick="toggle_3dmodel()"/> -->
 		<hotspot name="mangle_blanco_pre_info" style="flyoutimage" scale="0.40680000000001" depth="1000" rx="-0.30000000000000" ry="0" rz="2.94999999999996" ox="0.00000000000000" oy="0.00000000000000" tx="-651.50000000000091" ty="355.79999999999683" url="recursos/mangle_blanco_pre_info.png" onclick="set(hotspot[mangle_blanco_info].visible, true); set(hotspot[mangle_blanco_pre_info].visible, false);" />
 		<hotspot name="mangle_blanco_info" style="flyoutimage" scale="0.5" url="recursos/mangle_blanco_info.png" flying_state="out" visible="false" onclick="set(hotspot[mangle_blanco_info].visible, false); set(hotspot[mangle_blanco_pre_info].visible, true);" />
 		<hotspot name="animated_hotspot_2" style="skin_animated_hotspot" ath="-68.1939035" atv="0.2964044" scale="0.6" depth="1665.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="red_mangrove_beach_1" />
 
-		<layer name="model_container" type="container" keep="false" bgcolor="0x000000" zorder="0" enabled="true" visible="false" bgcapture="true" vr="true" width="90%" height="67.5%" align="center">
+		<!-- <layer name="model_container" type="container" keep="false" bgcolor="0x000000" zorder="0" enabled="true" visible="false" bgcapture="true" vr="true" width="90%" height="67.5%" align="center">
 			<layer name="threejs_container" iframeurl="https://siriuzz.github.io/vtour_3dmodels/viewer.html?model=manglar_fruto" type="iframe" vr="true" align="center" width="100%" height="100%" visible="false" fillcolor="0xffffff" />
 			<layer name="close_3dmodel" onclick='toggle_3dmodel()' url="recursos/botoncerrar.png" keep="true" enabled="true" align="leftbottom" x="10" y="5" scale="0.4" scale.mobile="0.2"/>
-		</layer>
+		</layer> -->
 
 		<preview url="panos/R0010057.tiles/preview.jpg" />
 
@@ -148,9 +148,16 @@
 		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="140.0" maxpixelzoom="2.0" fovmin="64.363265" fovmax="140.0" limitview="auto" hlookatmin="-180.0" hlookatmax="180.0" vlookatmin="-90.0" vlookatmax="90.0"/>
 		
 		<hotspot name="animated_hotspot" style="skin_animated_hotspot_2" ath="227.40000000000001" atv="0.00000000000000" scale="0.6" depth="1665.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="red_mangrove_3" />
+		<hotspot name="modelo_fruto" style="skin_frutostyle" url="recursos/mangle_fruto.png" width="120" height="120" bgroundedge="60" ath="-67.3872021" atv="-1.3954662" scale="1.5" depth="1664.59999999999991" rx="0" ry="0" rz="0" ox="-41.84999999999977" oy="-32.05254037844466" onloaded="circlepos(3,6);" html="Modelo 3D Cangrejo" onclick="toggle_3dmodel()"/>
 		<hotspot name="mangle_boton_pre_info" style="flyoutimage" scale="0.48250000000002" depth="1000" rx="0" ry="25.80000000000000" rz="0.60000000000001" ox="0.00000000000000" oy="0.00000000000000" tx="1193.65000000000509" ty="328.64999999999986" url="recursos/mangle_boton_pre_info.png" onclick="set(hotspot[mangle_boton_info].visible, true); set(hotspot[mangle_boton_pre_info].visible, false);" />
 		<hotspot name="mangle_boton_info" style="flyoutimage" scale="0.5" url="recursos/mangle_boton_info.png" flying_state="out" visible="false" onclick="set(hotspot[mangle_boton_info].visible, false); set(hotspot[mangle_boton_pre_info].visible, true);" />
 		<hotspot name="animated_hotspot_2" style="skin_animated_hotspot" ath="161.4260967" atv="3.9054388" scale="0.6" depth="1665.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="white_mangrove_2" />
+
+
+		<layer name="model_container" type="container" keep="false" bgcolor="0x000000" zorder="0" enabled="true" visible="false" bgcapture="true" vr="true" width="90%" height="67.5%" align="center">
+			<layer name="threejs_container" iframeurl="https://siriuzz.github.io/vtour_3dmodels/viewer.html?model=manglar_fruto" type="iframe" vr="true" align="center" width="100%" height="100%" visible="false" fillcolor="0xffffff" />
+			<layer name="close_3dmodel" onclick='toggle_3dmodel()' url="recursos/botoncerrar.png" keep="true" enabled="true" align="leftbottom" x="10" y="5" scale="0.4" scale.mobile="0.2"/>
+		</layer>
 
 		<preview url="panos/R0010058.tiles/preview.jpg" />
 
