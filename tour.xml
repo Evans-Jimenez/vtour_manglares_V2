@@ -180,7 +180,10 @@
 			<layer name="threejs_container" iframeurl="https://siriuzz.github.io/vtour_3dmodels/viewer.html?model=manglar_fruto" type="iframe" vr="true" align="center" width="100%" height="100%" visible="false" fillcolor="0xffffff" />
 			<layer name="close_3dmodel" onclick='toggle_3dmodel()' url="recursos/botoncerrar.png" keep="true" enabled="true" align="leftbottom" x="10" y="5" scale="0.4" scale.mobile="0.2"/>
 			<layer type="container" align="center" x="0" y="0" width="100" height="100" bgcolor="0xDD4477" bgalpha="1.0" bgcapture="true" ondown="draglayer_within_parent();">
-				<layer style="text" text="Los frutos del mangle botoncillo miden de 10 a 12 mm de diámetro, son correosos, lateralmente aplanados, con dos alas y están organizados tipo tejado en una estructura tipo cono." align="center" />
+				<layer 
+				style="text" 
+				text="data:testtext" 
+				align="center" />
 			</layer>
 		</layer>
 
@@ -241,4 +244,13 @@
 		<hotspot name="Volver Inicio" style="skin_animated_hotspot_2" ath="-1.5312891" atv="22.1069124" tooltip="$(hs)" scale="0.6" depth="1665.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="black_mangrove"/>
 		<hotspot name="animated_hotspo_2" style="skin_animated_hotspot" ath="-171.9894304" atv="1.8093334" scale="0.6" depth="1665.20000000000005" onloaded="do_crop_animation(128,128, 40);" linkedscene="close_up_2" />
 	</scene>
+
+	<data name="testtext"><![CDATA[
+		<div style="font-size:20px; font-weight:bold; text-align:center;">Frutos</div>
+		<br>
+		Los frutos del mangle botoncillo miden de 10 a 12 mm de diámetro, son correosos, lateralmente aplanados, con dos alas y están organizados tipo tejado en una estructura tipo cono. 
+		A su vez, el pericarpio es delgado, correoso en la superficie exterior y con aerénquima esponjoso en las capas internas. 
+		Además, los frutos tienen coloración marrón-purpúrea.
+		<br>
+	]]></data>
 </krpano>
