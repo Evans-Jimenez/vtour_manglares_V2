@@ -179,7 +179,7 @@
 		<layer name="model_container" type="container" keep="false" bgcolor="0x000000" zorder="0" enabled="true" visible="false" bgcapture="true" vr="true" width="90%" height="67.5%" align="center">
 			<layer name="threejs_container" iframeurl="https://siriuzz.github.io/vtour_3dmodels/viewer.html?model=manglar_fruto" type="iframe" vr="true" align="center" width="100%" height="100%" visible="false" fillcolor="0xffffff" />
 			<layer name="close_3dmodel" onclick='toggle_3dmodel()' url="recursos/botoncerrar.png" keep="true" enabled="true" align="leftbottom" x="10" y="5" scale="0.4" scale.mobile="0.2"/>
-			<layer type="container" align="center" x="100" y="100" width="500" height="100" bgcolor="0x000000" bgalpha="1.0" bgcapture="true" ondown="draglayer_within_parent();">
+			<layer type="container" align="center" x="0" y="-400" width="500" height="100" bgcolor="0x000000" bgalpha="1.0" bgcapture="true" ondown="draglayer_within_parent();">
 				<layer 
 				style="text" 
 				text="data:testtext" 
